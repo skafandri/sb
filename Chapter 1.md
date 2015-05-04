@@ -3,13 +3,13 @@
 ###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 Introduction
 **Git** is a distributed VCS (Version Control System). If you are not using an VCS in your company, stop this tutorial right now and go to install one, we will talk later. I would recommand Git, a comparison of VCS tools or a detailed documentation about Git are out of the scope of this book. If you are already working with a different VCS (SVN, Mercurial or any other tool) that's perfectly fine, it will be trivial to translate the commands we will use in this tutorial to your preferred VCS syntax. We will be using basic operations like *get changes, update remote repository, compare changes*. If you are not using a VCS yet, this can be an opportunity to start with Git.
 
-If you didn't yet, you can install Git from [here] http://git-scm.com/downloads.
+If you didn't yet, you can install Git from [git_url].
 Since the source code of this tutorial is hosted on [GitHub](https://github.com/symfony-tutorial/tutorial) all the remote references will be pointing to the GitHub repository. When following the instructions, always change
     `git@github.com:symfony-tutorial/tutorial.git` to `git@github.com:your_username/your_repository.git`.
 
 If you didn't worked with github before, you may need to learn how to [set up an SSH key](https://help.github.com/articles/generating-ssh-keys/)
 
-
+ [git_url]: http://git-scm.com/downloads
 
 
 Enough **chattering**, let's get to the keyboard.
