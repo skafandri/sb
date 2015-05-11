@@ -471,3 +471,5 @@ Did you noticed that toolbar in the bottom? That's called the Symfony debug tool
 >You may need to install a missing PHP extention
 
 3. Update your Symfony version to **2.7**
+
+4. Create a new configuration file **app/config/doctrine.yml** and move the "Doctrine Configuration" section from **app/config/config.yml** into the new created file. Exclude the new file from Git.
