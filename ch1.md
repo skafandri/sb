@@ -248,14 +248,14 @@ Successfully rebased and updated refs/heads/master.
 Composer is a dependency management tool for PHP applications. To install Composer, simply run:
 
 ````bsh
-$ curl -sS https://getcomposer.org/installer|php -- \
+$ curl -sS https://getcomposer.org/installer|sudo php -- \
 --install-dir=/bin --filename=composer
 #!/usr/bin/env php
 All settings correct for using Composer
 Downloading...
 
-Composer successfully installed to: /home/skafandri/bin/composer
-Use it: php /home/skafandri/bin/composer
+Composer successfully installed to: /bin/composer
+Use it: php /bin/composer
 ````
 
 You can check the composer version by typing
@@ -280,7 +280,7 @@ $ unlink  cmoposer.json
 Now proceed with installation
 
 ````bash
-$ composer create-project symfony/framework-standard-edition "2.6.7"
+$ composer create-project symfony/framework-standard-edition "2.6.7" .
 Installing symfony/framework-standard-edition (v2.6.7)
  - Installing symfony/framework-standard-edition (v2.6.7)
    Downloading: 100%
@@ -347,7 +347,7 @@ Composer generated the directory structure of your Symfony application.
 - **web** is the web directory that your web server should use as DocumentRoot
 
 
-Composer generated a **composer.json** file containing the application dependencies and some other configurations. We will install two additional packages, *doctrine/migrations* and *doctrine/mongodb-odm-bundle*.
+Composer generated a **composer.json** file containing the application dependencies and some other configurations. We will install two additional packages, *doctrine/migrations* and *doctrine/doctrine-migrations-bundle*.
 
 Edit composer.json and add "doctrine/migrations": "1.0.*@dev" and "doctrine/doctrine-migrations-bundle": "1.0.*" to the end of the **require** section, your composer.json should look like
 
@@ -481,8 +481,8 @@ Did you noticed that toolbar in the bottom? That's called the Symfony debug tool
 >You will need `git branch` and `git remote` commands
 
 2. Add "doctrine/mongodb-odm" and "doctrine/mongodb-odm-bundle" packages to your application
->You may need to install a missing PHP extention
+>You may need to install an additional PHP extention
 
 3. Update your Symfony version to **2.7**
 
-4. Create a new configuration file **app/config/doctrine.yml** and move the "Doctrine Configuration" section from **app/config/config.yml** into the new created file. Exclude the new file from Git.
+4. Create a new configuration file **app/config/doctrine.yml** and move the "Doctrine Configuration" section from **app/config/config.yml** into the new created file.
