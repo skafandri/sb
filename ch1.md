@@ -28,7 +28,6 @@ $ git config --global alias.last 'log -1 HEAD'
 ````
 Don't worry if you don't understand any of those commands, we will discover them later in this book.  
 
-<br/>
 
 ###1.1.2 Your first repository
 
@@ -86,6 +85,7 @@ To enable git colors output, run `git config --global color.ui true`
 
 Git tells us that we have one modified file that is not *staged* for commit. You can edit as many files as you want, only *staged* files will be taken into consideration when committing. Let's stage the file we just edited using the command `git add composer.json`. Git doesn't show any feedback when the command runs successfully but will show an error message in case of failure.  
 
+<br/><br/>
 
 Let's run `git status` again and see what happens.
 ````bash
@@ -147,7 +147,6 @@ index e69de29..9e26dfe 100644
 
 Beside the commit hash, the author, the date, and the commit message, Git also shows a *diff* between the specified commit and the commit right before it. The `+{}` indicates the change we made in that commit.  
 
-<br/>
 
 ###1.1.4 Rewrite the history
 
@@ -184,7 +183,7 @@ Date:   Sat May 9 16:40:58 2015 +0300
 The last two commits are a perfect candidate to be merged in a single commit, let's do it.
 
 ````bash
-git rebase -i 2eef0a49c0eae24304407b470499aff9ecc08e9d^
+git rebase -i fa7887ace14536a24684390df5d6915d38019be4
 #Git will launch your configured text editor with the content:
 pick 2eef0a4 added empty object to composer.json
 pick effeaa3 add line break in composer.json
@@ -207,6 +206,10 @@ pick effeaa3 add line break in composer.json
 #
 # Note that empty commits are commented out
 ````
+
+<br/>
+
+>fa7887ace14536a24684390df5d6915d38019be4 is the commit (before before) the current commit in our repository, you can reference it using **HEAD^^**
 
 Edit the second line and change **pick** to **squash**, save the file and exit.
 
@@ -248,14 +251,14 @@ Successfully rebased and updated refs/heads/master.
 Composer is a dependency management tool for PHP applications. To install Composer, simply run:
 
 ````bsh
-$ curl -sS https://getcomposer.org/installer|php -- \
+$ curl -sS https://getcomposer.org/installer|sudo php -- \
 --install-dir=/bin --filename=composer
 #!/usr/bin/env php
 All settings correct for using Composer
 Downloading...
 
-Composer successfully installed to: /home/skafandri/bin/composer
-Use it: php /home/skafandri/bin/composer
+Composer successfully installed to: /bin/composer
+Use it: php /bin/composer
 ````
 
 You can check the composer version by typing
@@ -274,13 +277,13 @@ Remove everything form you project folder (or create another one)
 
 ````bash
 $ rm -rf .git
-$ unlink  cmoposer.json
+$ unlink  composer.json
 ````
 
 Now proceed with installation
 
 ````bash
-$ composer create-project symfony/framework-standard-edition "2.6.7"
+$ composer create-project symfony/framework-standard-edition . "2.6.7"
 Installing symfony/framework-standard-edition (v2.6.7)
  - Installing symfony/framework-standard-edition (v2.6.7)
    Downloading: 100%
@@ -301,6 +304,7 @@ instalation suggests...
 Generating autoload files
 
 ````
+>composer uses php curl extension, if it is not installed, you can install it by typing `sudo apt-get install php5-curl`
 
 Then you will be prompted for missing parameters
 
@@ -335,6 +339,8 @@ Server running on http://127.0.0.1:8000
 Quit the server with CONTROL-C.
 ````
 
+>If you get an error *-bash: app/console: Permission denied* probably you don't have execute right on the file. You can add it by typing `chmod u+x app/console`
+
 Now you should be able to access the application at the address [ http://127.0.0.1:8000]( http://127.0.0.1:8000)
 
 If you get the exception **NotFoundHttpException: No route found for "GET /" ** congratulations, your application is up and running.
@@ -347,7 +353,7 @@ Composer generated the directory structure of your Symfony application.
 - **web** is the web directory that your web server should use as DocumentRoot
 
 
-Composer generated a **composer.json** file containing the application dependencies and some other configurations. We will install two additional packages, *doctrine/migrations* and *doctrine/mongodb-odm-bundle*.
+Composer generated a **composer.json** file containing the application dependencies and some other configurations. We will install two additional packages, *doctrine/migrations* and *doctrine/doctrine-migrations-bundle*.
 
 Edit composer.json and add "doctrine/migrations": "1.0.*@dev" and "doctrine/doctrine-migrations-bundle": "1.0.*" to the end of the **require** section, your composer.json should look like
 
@@ -443,12 +449,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-
     public function indexAction()
     {
         return $this->render('default/index.html.twig');
     }
-
 }
 ````
 
@@ -481,8 +485,8 @@ Did you noticed that toolbar in the bottom? That's called the Symfony debug tool
 >You will need `git branch` and `git remote` commands
 
 2. Add "doctrine/mongodb-odm" and "doctrine/mongodb-odm-bundle" packages to your application
->You may need to install a missing PHP extention
+>You may need to install an additional PHP extention
 
 3. Update your Symfony version to **2.7**
 
-4. Create a new configuration file **app/config/doctrine.yml** and move the "Doctrine Configuration" section from **app/config/config.yml** into the new created file. Exclude the new file from Git.
+4. Create a new configuration file **app/config/doctrine.yml** and move the "Doctrine Configuration" section from **app/config/config.yml** into the new created file.

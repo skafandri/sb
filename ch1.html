@@ -68,19 +68,19 @@
 .markdown-preview span.float-right { display: block; margin-left: 13px; overflow: hidden; float: right; }
 .markdown-preview span.float-right > span { display: block; overflow: hidden; margin: 13px auto 0px; text-align: right; }
 .markdown-preview code, .markdown-preview tt { margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); border-radius: 3px; text-shadow: none; background-color: rgb(248, 248, 248); }
-.markdown-preview pre.editor-colors { font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; border: 1px solid rgb(224, 224, 225); background: rgb(250, 250, 250); }
+.markdown-preview pre.editor-colors { font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; border: 1px solid rgb(230, 230, 230); background: rgb(255, 255, 255); }
 .markdown-preview kbd { border-radius: 2px; border-width: 1px; border-style: solid; border-color: rgb(221, 221, 221) rgb(204, 204, 204) rgb(204, 204, 204) rgb(221, 221, 221); padding: 1px 4px; line-height: 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-image: linear-gradient(rgb(241, 241, 241), rgb(221, 221, 221)); background-color: rgb(221, 221, 221); background-repeat: repeat-x; }
 .markdown-preview .emoji { height: 20px; width: 20px; }
-.markdown-preview { font-size: 1.25em; color: rgb(80, 81, 83); background-color: rgb(255, 255, 255); }
-.markdown-preview h1, .markdown-preview h2 { color: inherit; border-color: rgb(218, 219, 220); }
+.markdown-preview { font-size: 1.25em; color: rgb(87, 87, 87); background-color: rgb(255, 255, 255); }
+.markdown-preview h1, .markdown-preview h2 { color: inherit; border-color: rgb(224, 224, 224); }
 .markdown-preview a { color: rgb(20, 146, 255); }
 .markdown-preview hr { background-color: rgb(255, 255, 255); }
-.markdown-preview blockquote { color: rgb(80, 81, 83); border-left-color: rgba(80, 81, 83, 0.701961); }
-.markdown-preview table th, .markdown-preview table td { border-color: rgb(218, 219, 220); }
+.markdown-preview blockquote { color: rgb(87, 87, 87); border-left-color: rgba(87, 87, 87, 0.701961); }
+.markdown-preview table th, .markdown-preview table td { border-color: rgb(224, 224, 224); }
 .markdown-preview table th { background-color: rgb(255, 255, 255); }
 .markdown-preview table tr { background-color: rgb(255, 255, 255); }
 .markdown-preview table tr:nth-child(2n) { background-color: rgb(247, 247, 247); }
-.markdown-preview code { color: rgb(104, 106, 110); border-color: rgb(218, 219, 220); background-color: rgb(247, 247, 247); background-clip: padding-box; }
+.markdown-preview code { color: rgb(112, 112, 112); border-color: rgb(224, 224, 224); background-color: rgb(252, 252, 252); background-clip: padding-box; }
 .markdown-preview pre.editor-colors::shadow .line.cursor-line { background-color: transparent; }
 .bracket-matcher .region {
   border-bottom: 1px dotted lime;
@@ -93,78 +93,25 @@
 
 pre.editor-colors,
 .host {
-  background-color: #fafafa;
-  color: #545454;
-}
-pre.editor-colors .line.cursor-line,
-.host .line.cursor-line {
-  background-color: rgba(56, 75, 112, 0.07);
-}
-pre.editor-colors .invisible,
-.host .invisible {
-  color: #545454;
-}
-pre.editor-colors .cursor,
-.host .cursor {
-  border-left: 2px solid #528bff;
-}
-pre.editor-colors .selection .region,
-.host .selection .region {
-  background-color: #e5e5e6;
-}
-pre.editor-colors .bracket-matcher .region,
-.host .bracket-matcher .region {
-  border-bottom: 1px solid #528bff;
-  box-sizing: border-box;
-  background-color: #eaeaeb;
+  background-color: #ffffff;
+  color: #555555;
 }
 pre.editor-colors .invisible-character,
 .host .invisible-character {
-  color: rgba(84, 84, 84, 0.4);
+  color: rgba(85, 85, 85, 0.2);
 }
 pre.editor-colors .indent-guide,
 .host .indent-guide {
-  color: rgba(84, 84, 84, 0.4);
+  color: rgba(85, 85, 85, 0.2);
 }
 pre.editor-colors .wrap-guide,
 .host .wrap-guide {
-  background-color: rgba(84, 84, 84, 0.4);
+  background-color: rgba(85, 85, 85, 0.2);
 }
-pre.editor-colors .gutter .line-number,
-.host .gutter .line-number {
-  color: #969696;
-  -webkit-font-smoothing: antialiased;
-}
-pre.editor-colors .gutter .line-number.git-line-removed:before,
-.host .gutter .line-number.git-line-removed:before {
-  bottom: -3px;
-}
-pre.editor-colors .gutter .line-number.git-line-removed:after,
-.host .gutter .line-number.git-line-removed:after {
-  content: "";
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 25px;
-  border-bottom: 1px dotted rgba(255, 20, 20, 0.5);
-  pointer-events: none;
-}
-pre.editor-colors .gutter .line-number.cursor-line,
-.host .gutter .line-number.cursor-line {
-  color: #545454;
-  background-color: #efeff0;
-}
-pre.editor-colors .gutter .line-number.cursor-line-no-selection,
-.host .gutter .line-number.cursor-line-no-selection {
-  background-color: transparent;
-}
-pre.editor-colors .gutter .line-number .icon-right,
-.host .gutter .line-number .icon-right {
-  color: #545454;
-}
-pre.editor-colors .gutter .line-number .icon-right,
-.host .gutter .line-number .icon-right {
-  color: #545454;
+pre.editor-colors .gutter,
+.host .gutter {
+  color: #555555;
+  background: #ffffff;
 }
 pre.editor-colors .gutter .line-number.folded,
 .host .gutter .line-number.folded,
@@ -172,188 +119,186 @@ pre.editor-colors .gutter .line-number:after,
 .host .gutter .line-number:after,
 pre.editor-colors .fold-marker:after,
 .host .fold-marker:after {
-  color: #545454;
+  color: #e87b00;
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #555;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #e1e1e1;
+}
+pre.editor-colors.is-focused .cursor,
+.host.is-focused .cursor {
+  border-color: #000000;
+}
+pre.editor-colors.is-focused .selection .region,
+.host.is-focused .selection .region {
+  background-color: #afc4da;
+}
+pre.editor-colors.is-focused .line-number.cursor-line-no-selection,
+.host.is-focused .line-number.cursor-line-no-selection,
+pre.editor-colors.is-focused .line.cursor-line,
+.host.is-focused .line.cursor-line {
+  background-color: rgba(255, 255, 134, 0.34);
+}
+pre.editor-colors .source.gfm,
+.host .source.gfm {
+  color: #444;
+}
+pre.editor-colors .gfm .markup.heading,
+.host .gfm .markup.heading {
+  color: #111;
+}
+pre.editor-colors .gfm .link,
+.host .gfm .link {
+  color: #888;
+}
+pre.editor-colors .gfm .variable.list,
+.host .gfm .variable.list {
+  color: #888;
+}
+pre.editor-colors .markdown .paragraph,
+.host .markdown .paragraph {
+  color: #444;
+}
+pre.editor-colors .markdown .heading,
+.host .markdown .heading {
+  color: #111;
+}
+pre.editor-colors .markdown .link,
+.host .markdown .link {
+  color: #888;
+}
+pre.editor-colors .markdown .link .string,
+.host .markdown .link .string {
+  color: #888;
+}
+.host(.is-focused) .cursor {
+  border-color: #000000;
+}
+.host(.is-focused) .selection .region {
+  background-color: #afc4da;
+}
+.host(.is-focused) .line-number.cursor-line-no-selection,
+.host(.is-focused) .line.cursor-line {
+  background-color: rgba(255, 255, 134, 0.34);
 }
 .comment {
-  color: #7b7b79;
+  color: #999988;
   font-style: italic;
-}
-.entity.name.type {
-  color: #a58a03;
-}
-.entity.other.inherited-class {
-  color: #428b1c;
-}
-.keyword {
-  color: #a71cce;
-}
-.keyword.control {
-  color: #a71cce;
-}
-.keyword.operator {
-  color: #545454;
-}
-.keyword.other.special-method {
-  color: #1f51eb;
-}
-.keyword.other.unit {
-  color: #893a01;
-}
-.storage {
-  color: #a71cce;
-}
-.constant {
-  color: #893a01;
-}
-.constant.character.escape {
-  color: #0a8560;
-}
-.constant.numeric {
-  color: #893a01;
-}
-.constant.other.color {
-  color: #0a8560;
-}
-.constant.other.symbol {
-  color: #0a8560;
-}
-.variable {
-  color: #bf1212;
-}
-.variable.interpolation {
-  color: #b81332;
-}
-.variable.parameter.function {
-  color: #545454;
-}
-.invalid.illegal {
-  background-color: #bf1212;
-  color: #fafafa;
 }
 .string {
-  color: #428b1c;
+  color: #D14;
 }
-.string.regexp {
-  color: #0a8560;
+.string .source,
+.string .meta.embedded.line {
+  color: #5A5A5A;
 }
-.string.other.link {
-  color: #bf1212;
+.string .punctuation.section.embedded {
+  color: #920B2D;
 }
-.punctuation.definition.comment {
-  color: #7b7b79;
+.string .punctuation.section.embedded .source {
+  color: #920B2D;
 }
-.punctuation.definition.parameters,
-.punctuation.definition.array {
-  color: #545454;
+.constant.numeric {
+  color: #D14;
 }
-.punctuation.definition.heading,
-.punctuation.definition.identity {
-  color: #1f51eb;
+.constant.language {
+  color: #606aa1;
 }
-.punctuation.definition.bold {
-  color: #a58a03;
+.constant.character,
+.constant.other {
+  color: #606aa1;
+}
+.constant.symbol {
+  color: #990073;
+}
+.constant.numeric.line-number.find-in-files .match {
+  color: rgba(143, 190, 0, 0.63);
+}
+.variable {
+  color: #008080;
+}
+.variable.parameter {
+  color: #606aa1;
+}
+.keyword {
+  color: #222;
   font-weight: bold;
 }
-.punctuation.definition.italic {
-  color: #a71cce;
-  font-style: italic;
+.keyword.unit {
+  color: #445588;
 }
-.punctuation.section.embedded {
-  color: #b81332;
+.keyword.special-method {
+  color: #0086B3;
 }
-.support.class {
-  color: #a58a03;
+.storage {
+  color: #222;
 }
-.support.function {
-  color: #0a8560;
+.storage.type {
+  color: #222;
 }
-.support.function.any-method {
-  color: #1f51eb;
+.entity.name.class {
+  text-decoration: underline;
+  color: #606aa1;
+}
+.entity.other.inherited-class {
+  text-decoration: underline;
+  color: #606aa1;
 }
 .entity.name.function {
-  color: #1f51eb;
-}
-.entity.name.class,
-.entity.name.type.class {
-  color: #a58a03;
-}
-.entity.name.section {
-  color: #1f51eb;
+  color: #900;
 }
 .entity.name.tag {
-  color: #bf1212;
+  color: #008080;
 }
 .entity.other.attribute-name {
-  color: #893a01;
-}
-.entity.other.attribute-name.id {
-  color: #1f51eb;
-}
-.meta.class {
-  color: #a58a03;
-}
-.meta.link {
-  color: #893a01;
-}
-.meta.require {
-  color: #1f51eb;
-}
-.meta.selector {
-  color: #a71cce;
-}
-.meta.separator {
-  background-color: #373b41;
-  color: #545454;
-}
-.meta.tag {
-  color: #545454;
-}
-.none {
-  color: #545454;
-}
-.markup.bold {
-  color: #893a01;
+  color: #458;
   font-weight: bold;
 }
-.markup.changed {
-  color: #a71cce;
+.entity.name.filename.find-in-files {
+  color: #E6DB74;
 }
-.markup.deleted {
-  color: #bf1212;
+.support.constant,
+.support.function,
+.support.type {
+  color: #458;
 }
-.markup.italic {
-  color: #a71cce;
-  font-style: italic;
+.support.class {
+  color: #008080;
 }
-.markup.heading .punctuation.definition.heading {
-  color: #1f51eb;
+.invalid {
+  color: #F8F8F0;
+  background-color: #00A8C6;
 }
-.markup.inserted {
-  color: #428b1c;
+.invalid.deprecated {
+  color: #F8F8F0;
+  background-color: #8FBE00;
 }
-.markup.list {
-  color: #bf1212;
+.meta.structure.dictionary.json > .string.quoted.double.json,
+.meta.structure.dictionary.json > .string.quoted.double.json .punctuation.string {
+  color: #000080;
 }
-.markup.quote {
-  color: #893a01;
+.meta.structure.dictionary.value.json > .string.quoted.double.json {
+  color: #d14;
 }
-.markup.raw.inline {
-  color: #428b1c;
+.meta.diff,
+.meta.diff.header {
+  color: #75715E;
 }
-.source.gfm .markup {
-  -webkit-font-smoothing: auto;
+.css.support.property-name {
+  font-weight: bold;
+  color: #333;
 }
-.source.gfm .markup.heading {
-  color: #bf1212;
+.css.constant {
+  color: #099;
 }
-.source.gfm .markup.link {
-  color: #1f51eb;
-}
-.source.gfm .link .entity {
-  color: #0a8560;
-}
-.ruby.symbol > .punctuation {
-  color: inherit;
+.bracket-matcher .region {
+  background-color: #C9C9C9;
+  opacity: .7;
+  border-bottom: 0 none;
 }
 </style>
   </head>
@@ -368,7 +313,6 @@ pre.editor-colors .fold-marker:after,
 <p>You can also setup aliases for Git, which are simply shorcuts to commands you use often. Here is the list of my aliases that I found very useful:</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.co&nbsp;checkout</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.br&nbsp;branch</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.ci&nbsp;commit</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.st&nbsp;status</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.poh&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>push&nbsp;origin&nbsp;HEAD</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.pom&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>pull&nbsp;origin&nbsp;master</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.dif&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>diff&nbsp;HEAD..origin/master</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.last&nbsp;</span><span class="string quoted single shell"><span class="punctuation definition string begin shell"><span>&#39;</span></span><span>log&nbsp;-1&nbsp;HEAD</span><span class="punctuation definition string end shell"><span>&#39;</span></span></span></span></div></pre>
 <p>Don&#39;t worry if you don&#39;t understand any of those commands, we will discover them later in this book.  </p>
-<p><br></p>
 <h3 id="1-1-2-your-first-repository">1.1.2 Your first repository</h3>
 <p>Go to your work directory and type in:</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;mkdir&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;</span><span class="support function builtin shell"><span>cd</span></span><span>&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;init</span></span></div><div class="line"><span class="source shell"><span>Initialized&nbsp;empty&nbsp;Git&nbsp;repository&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;/home/projects/symfony-tutorial/.git/</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;touch&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;add&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;commit&nbsp;-m&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>initial&nbsp;commit</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div></pre>
@@ -387,6 +331,7 @@ pre.editor-colors .fold-marker:after,
  colored in red.<br>To enable git colors output, run <code>git config --global color.ui true</code></p>
 </blockquote>
 <p>Git tells us that we have one modified file that is not <em>staged</em> for commit. You can edit as many files as you want, only <em>staged</em> files will be taken into consideration when committing. Let&#39;s stage the file we just edited using the command <code>git add composer.json</code>. Git doesn&#39;t show any feedback when the command runs successfully but will show an error message in case of failure.  </p>
+<p><br><br></p>
 <p>Let&#39;s run <code>git status</code> again and see what happens.</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;status</span></span></div><div class="line"><span class="source shell"><span>On&nbsp;branch&nbsp;master</span></span></div><div class="line"><span class="source shell"><span>Changes&nbsp;to&nbsp;be&nbsp;committed:</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>use&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>git&nbsp;reset&nbsp;HEAD&nbsp;&lt;file&gt;...</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span><span>&nbsp;to&nbsp;unstage</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;&nbsp;composer.json</span></span></div></pre>
 <p>The modified file is now ready to be committed. If you have git colors output enabled, you should see <strong>composer.json</strong>
@@ -402,14 +347,17 @@ pre.editor-colors .fold-marker:after,
 <p>Don&#39;t forget to change <code>2426add179a4c9a0df6a0bd43e28216da44e22c9</code> to the hash displayed in your repository history.</p>
 </blockquote>
 <p>Beside the commit hash, the author, the date, and the commit message, Git also shows a <em>diff</em> between the specified commit and the commit right before it. The <code>+{}</code> indicates the change we made in that commit.  </p>
-<p><br></p>
 <h3 id="1-1-4-rewrite-the-history">1.1.4 Rewrite the history</h3>
 <p>When working on a new feature or a bug fix, you may add many commits to your repository. Try to write an informative commit message that tells what and why the change occured. However, when checking your repository history, you may notice that two or more commits could be grouped in one commit because they share the same logic. Let&#39;s see how to do it.</p>
 <p>First, let&#39;s add a line break to composer.json, so it&#39;s content looks like</p>
 <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>{</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>}</span></span></span></div></pre><p>Let&#39;s commit this change with the message &quot;add line break in composer.json&quot;. Running <code>git log</code> will show something like</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;log</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;effeaa33d1334ccae894bd308ef41062096d4f77</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sun&nbsp;May&nbsp;10&nbsp;12:54:49&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;2eef0a49c0eae24304407b470499aff9ecc08e9d</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sat&nbsp;May&nbsp;9&nbsp;18:42:01&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;fa7887ace14536a24684390df5d6915d38019be4</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sat&nbsp;May&nbsp;9&nbsp;16:40:58&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;composer.json</span></span></div></pre>
 <p>The last two commits are a perfect candidate to be merged in a single commit, let&#39;s do it.</p>
-<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>git&nbsp;rebase&nbsp;-i&nbsp;2eef0a49c0eae24304407b470499aff9ecc08e9d^</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>Git&nbsp;will&nbsp;launch&nbsp;your&nbsp;configured&nbsp;text&nbsp;editor&nbsp;with&nbsp;the&nbsp;content:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;2eef0a4&nbsp;added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;effeaa3&nbsp;add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Rebase&nbsp;fa7887a..effeaa3&nbsp;onto&nbsp;fa7887a</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Commands:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;p,&nbsp;pick&nbsp;=&nbsp;use&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;r,&nbsp;reword&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;edit&nbsp;the&nbsp;commit&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;e,&nbsp;edit&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;stop&nbsp;for&nbsp;amending</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;s,&nbsp;squash&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;meld&nbsp;into&nbsp;previous&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;f,&nbsp;fixup&nbsp;=&nbsp;like&nbsp;&quot;squash&quot;,&nbsp;but&nbsp;discard&nbsp;this&nbsp;commit&#39;s&nbsp;log&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;x,&nbsp;exec&nbsp;=&nbsp;run&nbsp;command&nbsp;(the&nbsp;rest&nbsp;of&nbsp;the&nbsp;line)&nbsp;using&nbsp;shell</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;These&nbsp;lines&nbsp;can&nbsp;be&nbsp;re-ordered;&nbsp;they&nbsp;are&nbsp;executed&nbsp;from&nbsp;top&nbsp;to&nbsp;bottom.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;If&nbsp;you&nbsp;remove&nbsp;a&nbsp;line&nbsp;here&nbsp;THAT&nbsp;COMMIT&nbsp;WILL&nbsp;BE&nbsp;LOST.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;However,&nbsp;if&nbsp;you&nbsp;remove&nbsp;everything,&nbsp;the&nbsp;rebase&nbsp;will&nbsp;be&nbsp;aborted.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Note&nbsp;that&nbsp;empty&nbsp;commits&nbsp;are&nbsp;commented&nbsp;out</span><span>&nbsp;</span></span></span></div></pre>
+<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>git&nbsp;rebase&nbsp;-i&nbsp;fa7887ace14536a24684390df5d6915d38019be4</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>Git&nbsp;will&nbsp;launch&nbsp;your&nbsp;configured&nbsp;text&nbsp;editor&nbsp;with&nbsp;the&nbsp;content:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;2eef0a4&nbsp;added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;effeaa3&nbsp;add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Rebase&nbsp;fa7887a..effeaa3&nbsp;onto&nbsp;fa7887a</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Commands:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;p,&nbsp;pick&nbsp;=&nbsp;use&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;r,&nbsp;reword&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;edit&nbsp;the&nbsp;commit&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;e,&nbsp;edit&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;stop&nbsp;for&nbsp;amending</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;s,&nbsp;squash&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;meld&nbsp;into&nbsp;previous&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;f,&nbsp;fixup&nbsp;=&nbsp;like&nbsp;&quot;squash&quot;,&nbsp;but&nbsp;discard&nbsp;this&nbsp;commit&#39;s&nbsp;log&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;x,&nbsp;exec&nbsp;=&nbsp;run&nbsp;command&nbsp;(the&nbsp;rest&nbsp;of&nbsp;the&nbsp;line)&nbsp;using&nbsp;shell</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;These&nbsp;lines&nbsp;can&nbsp;be&nbsp;re-ordered;&nbsp;they&nbsp;are&nbsp;executed&nbsp;from&nbsp;top&nbsp;to&nbsp;bottom.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;If&nbsp;you&nbsp;remove&nbsp;a&nbsp;line&nbsp;here&nbsp;THAT&nbsp;COMMIT&nbsp;WILL&nbsp;BE&nbsp;LOST.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;However,&nbsp;if&nbsp;you&nbsp;remove&nbsp;everything,&nbsp;the&nbsp;rebase&nbsp;will&nbsp;be&nbsp;aborted.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Note&nbsp;that&nbsp;empty&nbsp;commits&nbsp;are&nbsp;commented&nbsp;out</span><span>&nbsp;</span></span></span></div></pre>
+<p><br></p>
+<blockquote>
+<p>fa7887ace14536a24684390df5d6915d38019be4 is the commit (before before) the current commit in our repository, you can reference it using <strong>HEAD^^</strong></p>
+</blockquote>
 <p>Edit the second line and change <strong>pick</strong> to <strong>squash</strong>, save the file and exit.</p>
 <p>Git will launch your text editor again with content:</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;This&nbsp;is&nbsp;a&nbsp;combination&nbsp;of&nbsp;2&nbsp;commits.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;The&nbsp;first&nbsp;commit&#39;s&nbsp;message&nbsp;is:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;This&nbsp;is&nbsp;the&nbsp;2nd&nbsp;commit&nbsp;message:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Please&nbsp;enter&nbsp;the&nbsp;commit&nbsp;message&nbsp;for&nbsp;your&nbsp;changes.&nbsp;Lines&nbsp;starting</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;with&nbsp;&#39;#&#39;&nbsp;will&nbsp;be&nbsp;ignored,&nbsp;and&nbsp;an&nbsp;empty&nbsp;message&nbsp;aborts&nbsp;the&nbsp;commit.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;rebase&nbsp;in&nbsp;progress;&nbsp;onto&nbsp;fa7887a</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;You&nbsp;are&nbsp;currently&nbsp;editing&nbsp;a&nbsp;commit&nbsp;while&nbsp;rebasing</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;branch&nbsp;&#39;master&#39;&nbsp;on&nbsp;&#39;fa7887a&#39;.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Changes&nbsp;to&nbsp;be&nbsp;committed:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;&nbsp;composer.json</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div></pre>
@@ -419,20 +367,26 @@ pre.editor-colors .fold-marker:after,
 <h2 id="1-2-composer">1.2 Composer</h2>
 <h2 id="1-2-1-instalation">1.2.1 Instalation</h2>
 <p>Composer is a dependency management tool for PHP applications. To install Composer, simply run:</p>
-<pre class="editor-colors lang-bsh"><div class="line"><span class="text plain null-grammar"><span>$&nbsp;curl&nbsp;-sS&nbsp;</span><span class="markup underline link https hyperlink"><span>https://getcomposer.org/installer|php</span></span><span>&nbsp;--&nbsp;\</span></span></div><div class="line"><span class="text plain null-grammar"><span>--install-dir=/bin&nbsp;--filename=composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>#!/usr/bin/env&nbsp;php</span></span></div><div class="line"><span class="text plain null-grammar"><span>All&nbsp;settings&nbsp;correct&nbsp;for&nbsp;using&nbsp;Composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>Downloading...</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>Composer&nbsp;successfully&nbsp;installed&nbsp;to:&nbsp;/home/skafandri/bin/composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>Use&nbsp;it:&nbsp;php&nbsp;/home/skafandri/bin/composer</span></span></div></pre>
+<pre class="editor-colors lang-bsh"><div class="line"><span class="text plain null-grammar"><span>$&nbsp;curl&nbsp;-sS&nbsp;</span><span class="markup underline link https hyperlink"><span>https://getcomposer.org/installer|sudo</span></span><span>&nbsp;php&nbsp;--&nbsp;\</span></span></div><div class="line"><span class="text plain null-grammar"><span>--install-dir=/bin&nbsp;--filename=composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>#!/usr/bin/env&nbsp;php</span></span></div><div class="line"><span class="text plain null-grammar"><span>All&nbsp;settings&nbsp;correct&nbsp;for&nbsp;using&nbsp;Composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>Downloading...</span></span></div><div class="line"><span class="text plain null-grammar"><span>&nbsp;</span></span></div><div class="line"><span class="text plain null-grammar"><span>Composer&nbsp;successfully&nbsp;installed&nbsp;to:&nbsp;/bin/composer</span></span></div><div class="line"><span class="text plain null-grammar"><span>Use&nbsp;it:&nbsp;php&nbsp;/bin/composer</span></span></div></pre>
 <p>You can check the composer version by typing</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;composer&nbsp;--version</span></span></div><div class="line"><span class="source shell"><span>Composer&nbsp;version&nbsp;1.0-dev</span></span></div><div class="line"><span class="source shell"><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>4eb8ecff9cd136c4c2829164db1a55ad9d2de616</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>&nbsp;2015-05-10&nbsp;19:56:28</span></span></div></pre>
 <p>For more details about other installation alternatives, check the composer <a href="https://getcomposer.org/doc/00-intro.md">online documenation</a>.  </p>
 <p><br></p>
 <h2 id="1-2-2-create-an-application">1.2.2 Create an application</h2>
 <p>Remove everything form you project folder (or create another one)</p>
-<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;rm&nbsp;-rf&nbsp;.git</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;unlink&nbsp;&nbsp;cmoposer.json</span></span></div></pre>
+<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;rm&nbsp;-rf&nbsp;.git</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;unlink&nbsp;&nbsp;composer.json</span></span></div></pre>
 <p>Now proceed with installation</p>
-<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;composer&nbsp;create-project&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>2.6.7</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>Installing&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.6.7</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.6.7</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Downloading:&nbsp;100%</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>Created&nbsp;project&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>Loading&nbsp;composer&nbsp;repositories&nbsp;with&nbsp;package&nbsp;information</span></span></div><div class="line"><span class="source shell"><span>Installing&nbsp;dependencies&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>including&nbsp;require-dev</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>&nbsp;from&nbsp;lock&nbsp;file</span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;doctrine/lexer&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v1.0.1</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Loading&nbsp;from&nbsp;cache</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;......</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;sensio/generator-bundle&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.5.3</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Loading&nbsp;from&nbsp;cache</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>instalation&nbsp;suggests...</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>Generating&nbsp;autoload&nbsp;files</span></span></div></pre>
+<pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;composer&nbsp;create-project&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="support function builtin shell"><span>.</span></span><span>&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>2.6.7</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>Installing&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.6.7</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;symfony/framework-standard-edition&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.6.7</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Downloading:&nbsp;100%</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>Created&nbsp;project&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>Loading&nbsp;composer&nbsp;repositories&nbsp;with&nbsp;package&nbsp;information</span></span></div><div class="line"><span class="source shell"><span>Installing&nbsp;dependencies&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>including&nbsp;require-dev</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>&nbsp;from&nbsp;lock&nbsp;file</span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;doctrine/lexer&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v1.0.1</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Loading&nbsp;from&nbsp;cache</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;......</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;-&nbsp;Installing&nbsp;sensio/generator-bundle&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>v2.5.3</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;Loading&nbsp;from&nbsp;cache</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>instalation&nbsp;suggests...</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>Generating&nbsp;autoload&nbsp;files</span></span></div></pre>
+<blockquote>
+<p>composer uses php curl extension, if it is not installed, you can install it by typing <code>sudo apt-get install php5-curl</code></p>
+</blockquote>
 <p>Then you will be prompted for missing parameters</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>Would&nbsp;you&nbsp;like&nbsp;to&nbsp;install&nbsp;Acme&nbsp;demo&nbsp;bundle</span><span class="keyword operator glob shell"><span>?</span></span><span>&nbsp;[y/N]&nbsp;N</span></span></div><div class="line"><span class="source shell"><span>Creating&nbsp;the&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>app/config/parameters.yml</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span><span>&nbsp;file</span></span></div><div class="line"><span class="source shell"><span>Some&nbsp;parameters&nbsp;are&nbsp;missing.&nbsp;Please&nbsp;provide&nbsp;them.</span></span></div><div class="line"><span class="source shell"><span>database_driver&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>pdo_mysql</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>database_host&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>127.0.0.1</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>database_port&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>null</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>database_name&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>symfony</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>database_user&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>root</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>database_password&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>null</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>mailer_transport&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>smtp</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>mailer_host&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>127.0.0.1</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>mailer_user&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>null</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>mailer_password&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>null</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>locale&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>en</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>secret&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>ThisTokenIsNotSoSecretChangeIt</span><span class="punctuation definition subshell shell"><span>)</span></span></span><span>:</span></span></div><div class="line"><span class="source shell"><span>Clearing&nbsp;the&nbsp;cache&nbsp;</span><span class="meta scope for-in-loop shell"><span class="keyword control shell"><span>for</span></span><span>&nbsp;</span><span class="variable other loop shell"><span>the</span></span><span>&nbsp;dev&nbsp;environment&nbsp;with&nbsp;debug&nbsp;</span><span class="support function builtin shell"><span>true</span></span></span></span></div><div class="line"><span class="source shell"><span class="meta scope for-in-loop shell"><span>Trying&nbsp;to&nbsp;install&nbsp;assets&nbsp;as&nbsp;symbolic&nbsp;links.</span></span></span></div><div class="line"><span class="source shell"><span class="meta scope for-in-loop shell"><span>...</span></span></span></div><div class="line"><span class="source shell"><span class="meta scope for-in-loop shell"><span>The&nbsp;assets&nbsp;were&nbsp;installed&nbsp;using&nbsp;symbolic&nbsp;links.</span></span></span></div></pre>
 <p>Our application is ready to run, you can run the PHP built in web server with the command</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;app/console&nbsp;server:run</span></span></div><div class="line"><span class="source shell"><span>Server&nbsp;running&nbsp;on&nbsp;http://127.0.0.1:8000</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>Quit&nbsp;the&nbsp;server&nbsp;with&nbsp;CONTROL-C.</span></span></div></pre>
+<blockquote>
+<p>If you get an error <em>-bash: app/console: Permission denied</em> probably you don&#39;t have execute right on the file. You can add it by typing <code>chmod u+x app/console</code></p>
+</blockquote>
 <p>Now you should be able to access the application at the address <a href="http://127.0.0.1:8000"> http://127.0.0.1:8000</a></p>
 <p>If you get the exception <strong>NotFoundHttpException: No route found for &quot;GET /&quot; </strong> congratulations, your application is up and running.</p>
 <p>Composer generated the directory structure of your Symfony application.</p>
@@ -442,7 +396,7 @@ pre.editor-colors .fold-marker:after,
 <li><strong>vendor</strong> contains code of external packages required by the application</li>
 <li><strong>web</strong> is the web directory that your web server should use as DocumentRoot</li>
 </ul>
-<p>Composer generated a <strong>composer.json</strong> file containing the application dependencies and some other configurations. We will install two additional packages, <em>doctrine/migrations</em> and <em>doctrine/mongodb-odm-bundle</em>.</p>
+<p>Composer generated a <strong>composer.json</strong> file containing the application dependencies and some other configurations. We will install two additional packages, <em>doctrine/migrations</em> and <em>doctrine/doctrine-migrations-bundle</em>.</p>
 <p>Edit composer.json and add &quot;doctrine/migrations&quot;: &quot;1.0.<em>@dev&quot; and &quot;doctrine/doctrine-migrations-bundle&quot;: &quot;1.0.</em>&quot; to the end of the <strong>require</strong> section, your composer.json should look like</p>
 <pre class="editor-colors lang-json"><div class="line"><span class="source json"><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>require</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span>:&nbsp;</span><span class="meta structure dictionary json"><span class="punctuation definition dictionary begin json"><span>{</span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>php</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>&gt;=5.3.3</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>symfony/symfony</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>2.6.7</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>doctrine/orm</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~2.2,&gt;=2.2.3,&lt;2.5</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>doctrine/dbal</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>&lt;2.5</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>doctrine/doctrine-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~1.2</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>twig/extensions</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~1.0</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>symfony/assetic-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~2.3</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>symfony/swiftmailer-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~2.3</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>symfony/monolog-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~2.4</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>sensio/distribution-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~3.0,&gt;=3.0.12</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>sensio/framework-extra-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~3.0,&gt;=3.0.2</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>incenteev/composer-parameter-handler</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>~2.0</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>doctrine/migrations</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>1.0.*@dev</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="punctuation separator dictionary pair json"><span>,</span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>doctrine/doctrine-migrations-bundle</span><span class="punctuation definition string end json"><span>&quot;</span></span></span><span class="meta structure dictionary value json"><span class="punctuation separator dictionary key-value json"><span>:</span></span><span>&nbsp;</span><span class="string quoted double json"><span class="punctuation definition string begin json"><span>&quot;</span></span><span>1.0.*</span><span class="punctuation definition string end json"><span>&quot;</span></span></span></span></span></span></div><div class="line"><span class="source json"><span class="meta structure dictionary json"><span class="meta structure dictionary value json"><span>&nbsp;&nbsp;</span></span><span class="punctuation definition dictionary end json"><span>}</span></span></span><span>,</span></span></div></pre>
 <p>Now we will tell composer to <em>update</em> the application with the new requirements</p>
@@ -458,7 +412,7 @@ pre.editor-colors .fold-marker:after,
 <p><code>@Route(&quot;/app/example&quot;, name=&quot;homepage&quot;)</code> tells Symfony to define a route with the name <strong>homepage</strong> and the path <strong>/app/example</strong>, we will cover the controller content and the routing options later. This configuration is set using an <em>annotation</em>. There are 4 ways to set configuration for your Symfony application: annotations, yaml, xml and PHP.</p>
 <p>Let&#39;s change this route definition from annotationto yaml.</p>
 <p>1.Remove the annotation block and the first use statement from the DefaultController so it looks like</p>
-<pre class="editor-colors lang-php"><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded begin php"><span>&lt;?php</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta namespace php"><span class="keyword other namespace php"><span>namespace</span></span><span>&nbsp;</span><span class="entity name type namespace php"><span>AppBundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta use php"><span class="keyword other use php"><span>use</span></span><span>&nbsp;</span><span class="support other namespace use php"><span>Symfony</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Bundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>FrameworkBundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta class php"><span class="storage type class php"><span>class</span></span><span>&nbsp;</span><span class="entity name type class php"><span>DefaultController</span></span><span>&nbsp;</span><span class="storage modifier extends php"><span>extends</span></span><span>&nbsp;</span><span class="meta other inherited-class php"><span class="entity other inherited-class php"><span>Controller</span></span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta function php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier php"><span>public</span></span><span>&nbsp;</span><span class="storage type function php"><span>function</span></span><span>&nbsp;</span><span class="entity name function php"><span>indexAction</span></span><span class="punctuation definition parameters begin php"><span>(</span></span><span class="punctuation definition parameters end php"><span>)</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control php"><span>return</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>this</span></span><span class="keyword operator class php"><span>-&gt;</span></span><span class="meta function-call object php"><span>render</span></span><span>(</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span>default/index.html.twig</span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div></pre>
+<pre class="editor-colors lang-php"><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded begin php"><span>&lt;?php</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta namespace php"><span class="keyword other namespace php"><span>namespace</span></span><span>&nbsp;</span><span class="entity name type namespace php"><span>AppBundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta use php"><span class="keyword other use php"><span>use</span></span><span>&nbsp;</span><span class="support other namespace use php"><span>Symfony</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Bundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>FrameworkBundle</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span><span class="punctuation separator inheritance php"><span>\</span></span><span>Controller</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta class php"><span class="storage type class php"><span>class</span></span><span>&nbsp;</span><span class="entity name type class php"><span>DefaultController</span></span><span>&nbsp;</span><span class="storage modifier extends php"><span>extends</span></span><span>&nbsp;</span><span class="meta other inherited-class php"><span class="entity other inherited-class php"><span>Controller</span></span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta function php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier php"><span>public</span></span><span>&nbsp;</span><span class="storage type function php"><span>function</span></span><span>&nbsp;</span><span class="entity name function php"><span>indexAction</span></span><span class="punctuation definition parameters begin php"><span>(</span></span><span class="punctuation definition parameters end php"><span>)</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control php"><span>return</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>this</span></span><span class="keyword operator class php"><span>-&gt;</span></span><span class="meta function-call object php"><span>render</span></span><span>(</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span>default/index.html.twig</span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div></pre>
 <p>2.Edit app/config/routing.yml</p>
 <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>app:</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>resource:&nbsp;&quot;@AppBundle/Resources/config/routing.yml&quot;</span></span></span></div></pre><p>3.Add a new file src/AppBundle/Resources/config/routing.yml</p>
 <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>app_home:</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;defaults:&nbsp;&nbsp;{&nbsp;_controller:&nbsp;AppBundle:Default:index}</span></span></span></div></pre><p>Done, if you visit <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> you should see a blank page with one word &quot;Homepage.&quot;</p>
@@ -474,12 +428,12 @@ pre.editor-colors .fold-marker:after,
 </li>
 <li><p>Add &quot;doctrine/mongodb-odm&quot; and &quot;doctrine/mongodb-odm-bundle&quot; packages to your application</p>
 <blockquote>
-<p>You may need to install a missing PHP extention</p>
+<p>You may need to install an additional PHP extention</p>
 </blockquote>
 </li>
 <li><p>Update your Symfony version to <strong>2.7</strong></p>
 </li>
-<li><p>Create a new configuration file <strong>app/config/doctrine.yml</strong> and move the &quot;Doctrine Configuration&quot; section from <strong>app/config/config.yml</strong> into the new created file. Exclude the new file from Git.</p>
+<li><p>Create a new configuration file <strong>app/config/doctrine.yml</strong> and move the &quot;Doctrine Configuration&quot; section from <strong>app/config/config.yml</strong> into the new created file.</p>
 </li>
 </ol></body>
 </html>
