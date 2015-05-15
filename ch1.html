@@ -68,19 +68,19 @@
 .markdown-preview span.float-right { display: block; margin-left: 13px; overflow: hidden; float: right; }
 .markdown-preview span.float-right > span { display: block; overflow: hidden; margin: 13px auto 0px; text-align: right; }
 .markdown-preview code, .markdown-preview tt { margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); border-radius: 3px; text-shadow: none; background-color: rgb(248, 248, 248); }
-.markdown-preview pre.editor-colors { font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; border: 1px solid rgb(230, 230, 230); background: rgb(255, 255, 255); }
+.markdown-preview pre.editor-colors { font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; border: 1px solid rgb(224, 224, 225); background: rgb(250, 250, 250); }
 .markdown-preview kbd { border-radius: 2px; border-width: 1px; border-style: solid; border-color: rgb(221, 221, 221) rgb(204, 204, 204) rgb(204, 204, 204) rgb(221, 221, 221); padding: 1px 4px; line-height: 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-image: linear-gradient(rgb(241, 241, 241), rgb(221, 221, 221)); background-color: rgb(221, 221, 221); background-repeat: repeat-x; }
 .markdown-preview .emoji { height: 20px; width: 20px; }
-.markdown-preview { font-size: 1.25em; color: rgb(87, 87, 87); background-color: rgb(255, 255, 255); }
-.markdown-preview h1, .markdown-preview h2 { color: inherit; border-color: rgb(224, 224, 224); }
+.markdown-preview { font-size: 1.25em; color: rgb(80, 81, 83); background-color: rgb(255, 255, 255); }
+.markdown-preview h1, .markdown-preview h2 { color: inherit; border-color: rgb(218, 219, 220); }
 .markdown-preview a { color: rgb(20, 146, 255); }
 .markdown-preview hr { background-color: rgb(255, 255, 255); }
-.markdown-preview blockquote { color: rgb(87, 87, 87); border-left-color: rgba(87, 87, 87, 0.701961); }
-.markdown-preview table th, .markdown-preview table td { border-color: rgb(224, 224, 224); }
+.markdown-preview blockquote { color: rgb(80, 81, 83); border-left-color: rgba(80, 81, 83, 0.701961); }
+.markdown-preview table th, .markdown-preview table td { border-color: rgb(218, 219, 220); }
 .markdown-preview table th { background-color: rgb(255, 255, 255); }
 .markdown-preview table tr { background-color: rgb(255, 255, 255); }
 .markdown-preview table tr:nth-child(2n) { background-color: rgb(247, 247, 247); }
-.markdown-preview code { color: rgb(112, 112, 112); border-color: rgb(224, 224, 224); background-color: rgb(252, 252, 252); background-clip: padding-box; }
+.markdown-preview code { color: rgb(104, 106, 110); border-color: rgb(218, 219, 220); background-color: rgb(247, 247, 247); background-clip: padding-box; }
 .markdown-preview pre.editor-colors::shadow .line.cursor-line { background-color: transparent; }
 .bracket-matcher .region {
   border-bottom: 1px dotted lime;
@@ -93,25 +93,78 @@
 
 pre.editor-colors,
 .host {
-  background-color: #ffffff;
-  color: #555555;
+  background-color: #fafafa;
+  color: #545454;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(56, 75, 112, 0.07);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #545454;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #528bff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #e5e5e6;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #528bff;
+  box-sizing: border-box;
+  background-color: #eaeaeb;
 }
 pre.editor-colors .invisible-character,
 .host .invisible-character {
-  color: rgba(85, 85, 85, 0.2);
+  color: rgba(84, 84, 84, 0.4);
 }
 pre.editor-colors .indent-guide,
 .host .indent-guide {
-  color: rgba(85, 85, 85, 0.2);
+  color: rgba(84, 84, 84, 0.4);
 }
 pre.editor-colors .wrap-guide,
 .host .wrap-guide {
-  background-color: rgba(85, 85, 85, 0.2);
+  background-color: rgba(84, 84, 84, 0.4);
 }
-pre.editor-colors .gutter,
-.host .gutter {
-  color: #555555;
-  background: #ffffff;
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #969696;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.git-line-removed:before,
+.host .gutter .line-number.git-line-removed:before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter .line-number.git-line-removed:after,
+.host .gutter .line-number.git-line-removed:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(255, 20, 20, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #545454;
+  background-color: #efeff0;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #545454;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #545454;
 }
 pre.editor-colors .gutter .line-number.folded,
 .host .gutter .line-number.folded,
@@ -119,186 +172,188 @@ pre.editor-colors .gutter .line-number:after,
 .host .gutter .line-number:after,
 pre.editor-colors .fold-marker:after,
 .host .fold-marker:after {
-  color: #e87b00;
-}
-pre.editor-colors .invisible,
-.host .invisible {
-  color: #555;
-}
-pre.editor-colors .selection .region,
-.host .selection .region {
-  background-color: #e1e1e1;
-}
-pre.editor-colors.is-focused .cursor,
-.host.is-focused .cursor {
-  border-color: #000000;
-}
-pre.editor-colors.is-focused .selection .region,
-.host.is-focused .selection .region {
-  background-color: #afc4da;
-}
-pre.editor-colors.is-focused .line-number.cursor-line-no-selection,
-.host.is-focused .line-number.cursor-line-no-selection,
-pre.editor-colors.is-focused .line.cursor-line,
-.host.is-focused .line.cursor-line {
-  background-color: rgba(255, 255, 134, 0.34);
-}
-pre.editor-colors .source.gfm,
-.host .source.gfm {
-  color: #444;
-}
-pre.editor-colors .gfm .markup.heading,
-.host .gfm .markup.heading {
-  color: #111;
-}
-pre.editor-colors .gfm .link,
-.host .gfm .link {
-  color: #888;
-}
-pre.editor-colors .gfm .variable.list,
-.host .gfm .variable.list {
-  color: #888;
-}
-pre.editor-colors .markdown .paragraph,
-.host .markdown .paragraph {
-  color: #444;
-}
-pre.editor-colors .markdown .heading,
-.host .markdown .heading {
-  color: #111;
-}
-pre.editor-colors .markdown .link,
-.host .markdown .link {
-  color: #888;
-}
-pre.editor-colors .markdown .link .string,
-.host .markdown .link .string {
-  color: #888;
-}
-.host(.is-focused) .cursor {
-  border-color: #000000;
-}
-.host(.is-focused) .selection .region {
-  background-color: #afc4da;
-}
-.host(.is-focused) .line-number.cursor-line-no-selection,
-.host(.is-focused) .line.cursor-line {
-  background-color: rgba(255, 255, 134, 0.34);
+  color: #545454;
 }
 .comment {
-  color: #999988;
+  color: #7b7b79;
   font-style: italic;
 }
-.string {
-  color: #D14;
-}
-.string .source,
-.string .meta.embedded.line {
-  color: #5A5A5A;
-}
-.string .punctuation.section.embedded {
-  color: #920B2D;
-}
-.string .punctuation.section.embedded .source {
-  color: #920B2D;
-}
-.constant.numeric {
-  color: #D14;
-}
-.constant.language {
-  color: #606aa1;
-}
-.constant.character,
-.constant.other {
-  color: #606aa1;
-}
-.constant.symbol {
-  color: #990073;
-}
-.constant.numeric.line-number.find-in-files .match {
-  color: rgba(143, 190, 0, 0.63);
-}
-.variable {
-  color: #008080;
-}
-.variable.parameter {
-  color: #606aa1;
-}
-.keyword {
-  color: #222;
-  font-weight: bold;
-}
-.keyword.unit {
-  color: #445588;
-}
-.keyword.special-method {
-  color: #0086B3;
-}
-.storage {
-  color: #222;
-}
-.storage.type {
-  color: #222;
-}
-.entity.name.class {
-  text-decoration: underline;
-  color: #606aa1;
+.entity.name.type {
+  color: #a58a03;
 }
 .entity.other.inherited-class {
-  text-decoration: underline;
-  color: #606aa1;
+  color: #428b1c;
 }
-.entity.name.function {
-  color: #900;
+.keyword {
+  color: #a71cce;
 }
-.entity.name.tag {
-  color: #008080;
+.keyword.control {
+  color: #a71cce;
 }
-.entity.other.attribute-name {
-  color: #458;
+.keyword.operator {
+  color: #545454;
+}
+.keyword.other.special-method {
+  color: #1f51eb;
+}
+.keyword.other.unit {
+  color: #893a01;
+}
+.storage {
+  color: #a71cce;
+}
+.constant {
+  color: #893a01;
+}
+.constant.character.escape {
+  color: #0a8560;
+}
+.constant.numeric {
+  color: #893a01;
+}
+.constant.other.color {
+  color: #0a8560;
+}
+.constant.other.symbol {
+  color: #0a8560;
+}
+.variable {
+  color: #bf1212;
+}
+.variable.interpolation {
+  color: #b81332;
+}
+.variable.parameter.function {
+  color: #545454;
+}
+.invalid.illegal {
+  background-color: #bf1212;
+  color: #fafafa;
+}
+.string {
+  color: #428b1c;
+}
+.string.regexp {
+  color: #0a8560;
+}
+.string.other.link {
+  color: #bf1212;
+}
+.punctuation.definition.comment {
+  color: #7b7b79;
+}
+.punctuation.definition.parameters,
+.punctuation.definition.array {
+  color: #545454;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #1f51eb;
+}
+.punctuation.definition.bold {
+  color: #a58a03;
   font-weight: bold;
 }
-.entity.name.filename.find-in-files {
-  color: #E6DB74;
+.punctuation.definition.italic {
+  color: #a71cce;
+  font-style: italic;
 }
-.support.constant,
-.support.function,
-.support.type {
-  color: #458;
+.punctuation.section.embedded {
+  color: #b81332;
 }
 .support.class {
-  color: #008080;
+  color: #a58a03;
 }
-.invalid {
-  color: #F8F8F0;
-  background-color: #00A8C6;
+.support.function {
+  color: #0a8560;
 }
-.invalid.deprecated {
-  color: #F8F8F0;
-  background-color: #8FBE00;
+.support.function.any-method {
+  color: #1f51eb;
 }
-.meta.structure.dictionary.json > .string.quoted.double.json,
-.meta.structure.dictionary.json > .string.quoted.double.json .punctuation.string {
-  color: #000080;
+.entity.name.function {
+  color: #1f51eb;
 }
-.meta.structure.dictionary.value.json > .string.quoted.double.json {
-  color: #d14;
+.entity.name.class,
+.entity.name.type.class {
+  color: #a58a03;
 }
-.meta.diff,
-.meta.diff.header {
-  color: #75715E;
+.entity.name.section {
+  color: #1f51eb;
 }
-.css.support.property-name {
+.entity.name.tag {
+  color: #bf1212;
+}
+.entity.other.attribute-name {
+  color: #893a01;
+}
+.entity.other.attribute-name.id {
+  color: #1f51eb;
+}
+.meta.class {
+  color: #a58a03;
+}
+.meta.link {
+  color: #893a01;
+}
+.meta.require {
+  color: #1f51eb;
+}
+.meta.selector {
+  color: #a71cce;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #545454;
+}
+.meta.tag {
+  color: #545454;
+}
+.none {
+  color: #545454;
+}
+.markup.bold {
+  color: #893a01;
   font-weight: bold;
-  color: #333;
 }
-.css.constant {
-  color: #099;
+.markup.changed {
+  color: #a71cce;
 }
-.bracket-matcher .region {
-  background-color: #C9C9C9;
-  opacity: .7;
-  border-bottom: 0 none;
+.markup.deleted {
+  color: #bf1212;
+}
+.markup.italic {
+  color: #a71cce;
+  font-style: italic;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #1f51eb;
+}
+.markup.inserted {
+  color: #428b1c;
+}
+.markup.list {
+  color: #bf1212;
+}
+.markup.quote {
+  color: #893a01;
+}
+.markup.raw.inline {
+  color: #428b1c;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .markup.heading {
+  color: #bf1212;
+}
+.source.gfm .markup.link {
+  color: #1f51eb;
+}
+.source.gfm .link .entity {
+  color: #0a8560;
+}
+.ruby.symbol > .punctuation {
+  color: inherit;
 }
 </style>
   </head>
@@ -312,7 +367,7 @@ pre.editor-colors .markdown .link .string,
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;user.name&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>Your&nbsp;name</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;user.email&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>your_email@example.com</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div></pre>
 <p>You can also setup aliases for Git, which are simply shorcuts to commands you use often. Here is the list of my aliases that I found very useful:</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.co&nbsp;checkout</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.br&nbsp;branch</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.ci&nbsp;commit</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.st&nbsp;status</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.poh&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>push&nbsp;origin&nbsp;HEAD</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.pom&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>pull&nbsp;origin&nbsp;master</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.dif&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>diff&nbsp;HEAD..origin/master</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;config&nbsp;--global&nbsp;</span><span class="support function builtin shell"><span>alias</span></span><span>.last&nbsp;</span><span class="string quoted single shell"><span class="punctuation definition string begin shell"><span>&#39;</span></span><span>log&nbsp;-1&nbsp;HEAD</span><span class="punctuation definition string end shell"><span>&#39;</span></span></span></span></div></pre>
-<p>Don&#39;t worry if you don&#39;t understand any of those commands, we will discover them later in this book.  </p>
+<p>Don&#39;t worry if you don&#39;t understand any of those commands, we will cover them later in this book.  </p>
 <h3 id="1-1-2-your-first-repository">1.1.2 Your first repository</h3>
 <p>Go to your work directory and type in:</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;mkdir&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;</span><span class="support function builtin shell"><span>cd</span></span><span>&nbsp;symfony-tutorial</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;init</span></span></div><div class="line"><span class="source shell"><span>Initialized&nbsp;empty&nbsp;Git&nbsp;repository&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;/home/projects/symfony-tutorial/.git/</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;touch&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;add&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;commit&nbsp;-m&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>initial&nbsp;commit</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span></span></div></pre>
@@ -331,7 +386,6 @@ pre.editor-colors .markdown .link .string,
  colored in red.<br>To enable git colors output, run <code>git config --global color.ui true</code></p>
 </blockquote>
 <p>Git tells us that we have one modified file that is not <em>staged</em> for commit. You can edit as many files as you want, only <em>staged</em> files will be taken into consideration when committing. Let&#39;s stage the file we just edited using the command <code>git add composer.json</code>. Git doesn&#39;t show any feedback when the command runs successfully but will show an error message in case of failure.  </p>
-<p><br><br></p>
 <p>Let&#39;s run <code>git status</code> again and see what happens.</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;status</span></span></div><div class="line"><span class="source shell"><span>On&nbsp;branch&nbsp;master</span></span></div><div class="line"><span class="source shell"><span>Changes&nbsp;to&nbsp;be&nbsp;committed:</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;</span><span class="meta scope subshell shell"><span class="punctuation definition subshell shell"><span>(</span></span><span>use&nbsp;</span><span class="string quoted double shell"><span class="punctuation definition string begin shell"><span>&quot;</span></span><span>git&nbsp;reset&nbsp;HEAD&nbsp;&lt;file&gt;...</span><span class="punctuation definition string end shell"><span>&quot;</span></span></span><span>&nbsp;to&nbsp;unstage</span><span class="punctuation definition subshell shell"><span>)</span></span></span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;&nbsp;composer.json</span></span></div></pre>
 <p>The modified file is now ready to be committed. If you have git colors output enabled, you should see <strong>composer.json</strong>
@@ -354,7 +408,6 @@ pre.editor-colors .markdown .link .string,
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>$&nbsp;git&nbsp;log</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;effeaa33d1334ccae894bd308ef41062096d4f77</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sun&nbsp;May&nbsp;10&nbsp;12:54:49&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;2eef0a49c0eae24304407b470499aff9ecc08e9d</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sat&nbsp;May&nbsp;9&nbsp;18:42:01&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>commit&nbsp;fa7887ace14536a24684390df5d6915d38019be4</span></span></div><div class="line"><span class="source shell"><span>Author:&nbsp;ilyes&nbsp;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>ilyes@kooli.me</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>Date:&nbsp;&nbsp;&nbsp;Sat&nbsp;May&nbsp;9&nbsp;16:40:58&nbsp;2015&nbsp;+0300</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span>&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;composer.json</span></span></div></pre>
 <p>The last two commits are a perfect candidate to be merged in a single commit, let&#39;s do it.</p>
 <pre class="editor-colors lang-bash"><div class="line"><span class="source shell"><span>git&nbsp;rebase&nbsp;-i&nbsp;fa7887ace14536a24684390df5d6915d38019be4</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>Git&nbsp;will&nbsp;launch&nbsp;your&nbsp;configured&nbsp;text&nbsp;editor&nbsp;with&nbsp;the&nbsp;content:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;2eef0a4&nbsp;added&nbsp;empty&nbsp;object&nbsp;to&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>pick&nbsp;effeaa3&nbsp;add&nbsp;line&nbsp;</span><span class="support function builtin shell"><span>break</span></span><span>&nbsp;</span><span class="keyword control shell"><span>in</span></span><span>&nbsp;composer.json</span></span></div><div class="line"><span class="source shell"><span>&nbsp;</span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Rebase&nbsp;fa7887a..effeaa3&nbsp;onto&nbsp;fa7887a</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Commands:</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;p,&nbsp;pick&nbsp;=&nbsp;use&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;r,&nbsp;reword&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;edit&nbsp;the&nbsp;commit&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;e,&nbsp;edit&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;stop&nbsp;for&nbsp;amending</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;s,&nbsp;squash&nbsp;=&nbsp;use&nbsp;commit,&nbsp;but&nbsp;meld&nbsp;into&nbsp;previous&nbsp;commit</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;f,&nbsp;fixup&nbsp;=&nbsp;like&nbsp;&quot;squash&quot;,&nbsp;but&nbsp;discard&nbsp;this&nbsp;commit&#39;s&nbsp;log&nbsp;message</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;&nbsp;x,&nbsp;exec&nbsp;=&nbsp;run&nbsp;command&nbsp;(the&nbsp;rest&nbsp;of&nbsp;the&nbsp;line)&nbsp;using&nbsp;shell</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;These&nbsp;lines&nbsp;can&nbsp;be&nbsp;re-ordered;&nbsp;they&nbsp;are&nbsp;executed&nbsp;from&nbsp;top&nbsp;to&nbsp;bottom.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;If&nbsp;you&nbsp;remove&nbsp;a&nbsp;line&nbsp;here&nbsp;THAT&nbsp;COMMIT&nbsp;WILL&nbsp;BE&nbsp;LOST.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;However,&nbsp;if&nbsp;you&nbsp;remove&nbsp;everything,&nbsp;the&nbsp;rebase&nbsp;will&nbsp;be&nbsp;aborted.</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;</span></span></span></div><div class="line"><span class="source shell"><span class="comment line number-sign shell"><span class="punctuation definition comment shell"><span>#</span></span><span>&nbsp;Note&nbsp;that&nbsp;empty&nbsp;commits&nbsp;are&nbsp;commented&nbsp;out</span><span>&nbsp;</span></span></span></div></pre>
-<p><br></p>
 <blockquote>
 <p>fa7887ace14536a24684390df5d6915d38019be4 is the commit (before before) the current commit in our repository, you can reference it using <strong>HEAD^^</strong></p>
 </blockquote>
@@ -418,7 +471,7 @@ pre.editor-colors .markdown .link .string,
 <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>app_home:</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>path:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;defaults:&nbsp;&nbsp;{&nbsp;_controller:&nbsp;AppBundle:Default:index}</span></span></span></div></pre><p>Done, if you visit <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> you should see a blank page with one word &quot;Homepage.&quot;</p>
 <h2 id="1-4-profiler">1.4 Profiler</h2>
 <p>Did you noticed that toolbar in the bottom? That&#39;s called the Symfony debug toolbar. It shows some informations as the Symfony and PHP versions, the route and the controller rendering the current request, processing time and memory usage.. You can click on the third link that looks like <strong>5e780b app dev</strong> to access the Symfony profiler. There you can find a detailed profile about the last requests. Feel free to explore the profiler sections. By default the profiler is enabled only in <em>dev</em> mode. We will cover Symfony modes in details later.  </p>
-<p><br></p>
+<p><br><br><br></p>
 <h2 id="1-5-homework">1.5 Homework</h2>
 <ol>
 <li><p>Initialize a new git repository in your project folder, create a new branch with the name <strong>ch1</strong>, commit all the files to that branch and <strong>push</strong> the changes to a <strong>remote</strong> repository that you create on <a href="https://github.com/">Github</a></p>

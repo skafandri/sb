@@ -26,7 +26,7 @@ $ git config --global alias.pom "pull origin master"
 $ git config --global alias.dif "diff HEAD..origin/master"
 $ git config --global alias.last 'log -1 HEAD'
 ````
-Don't worry if you don't understand any of those commands, we will discover them later in this book.  
+Don't worry if you don't understand any of those commands, we will cover them later in this book.  
 
 
 ###1.1.2 Your first repository
@@ -54,7 +54,6 @@ Date:   Sat May 9 16:40:58 2015 +0300
 Git generates a *unique* hash for each commit (10343840c09043b26df51ef9806091a8dd0c646b), so most probably you will see a different hash in your repository.
 
 >Git generates an SHA-1 hash computed from your repository metadata, your username and the current timestamp. This data combined together guarantees there is a very small probability of colliding with other commits  
-
 
 Git also keeps track about the author, the commit date and the commit message. Talking about commit messages, **initial commit** is a valid message, however is not very informative. Git gives you the possibility to rewrite commit messages even after you commited them, let's change our commit message to something more significant.
 
@@ -84,8 +83,6 @@ no changes added to commit (use "git add" and/or "git commit -a")
 To enable git colors output, run `git config --global color.ui true`
 
 Git tells us that we have one modified file that is not *staged* for commit. You can edit as many files as you want, only *staged* files will be taken into consideration when committing. Let's stage the file we just edited using the command `git add composer.json`. Git doesn't show any feedback when the command runs successfully but will show an error message in case of failure.  
-
-<br/><br/>
 
 Let's run `git status` again and see what happens.
 ````bash
@@ -206,8 +203,6 @@ pick effeaa3 add line break in composer.json
 #
 # Note that empty commits are commented out
 ````
-
-<br/>
 
 >fa7887ace14536a24684390df5d6915d38019be4 is the commit (before before) the current commit in our repository, you can reference it using **HEAD^^**
 
@@ -477,7 +472,7 @@ Done, if you visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) you should s
 
 Did you noticed that toolbar in the bottom? That's called the Symfony debug toolbar. It shows some informations as the Symfony and PHP versions, the route and the controller rendering the current request, processing time and memory usage.. You can click on the third link that looks like **5e780b app dev** to access the Symfony profiler. There you can find a detailed profile about the last requests. Feel free to explore the profiler sections. By default the profiler is enabled only in *dev* mode. We will cover Symfony modes in details later.  
 
-<br/>
+<br/><br/><br/>
 
 ##1.5 Homework
 
