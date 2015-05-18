@@ -74,14 +74,15 @@ The first line means that our template **extends** from **app/Resources/views/ba
 
 `path('catalog_category_list')` uses the Twig **path** function that generates a relative URL from a given route name.
 
-<br/>
 
 >If you want to generate absolute URLs use **url** instead of **path**. ie: `url('catalog_category_list')`
 
 
-<br/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 - **app/Resources/views/catalog/category/list.html.twig**
+
+<br/>
 
 ````html
 {% extends 'base.html.twig' %}
@@ -111,9 +112,11 @@ The first line means that our template **extends** from **app/Resources/views/ba
     <a href="{{ path('catalog_index') }}">Back to catalog</a>
 {% endblock %}
 ````
+<br/>
 
 `set showUrl = path('catalog_category_show',{'categoryId': category.id})` is how you assign a value to a variable in Twig. This time we used the **path** function with a second argument `{'categoryId': category.id}`. This argument will be passed to the Controller that will render that route.
 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 - **app/Resources/views/catalog/category/show.html.twig**
 
@@ -150,7 +153,11 @@ The first line means that our template **extends** from **app/Resources/views/ba
 {% endblock %}
 ````
 
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+
 - **app/Resources/views/catalog/category/edit.html.twig**
+<br/>
 
 ````html
 {% extends 'base.html.twig' %}
@@ -196,7 +203,7 @@ The first line means that our template **extends** from **app/Resources/views/ba
 {% endblock %}
 ````
 
-
+<br/><br/><br/><br/><br/><br/><br/>
 
 ### 2.1.2 Controllers
 
@@ -244,6 +251,14 @@ class CatalogController extends Controller
         $arguments = array('categoryId' => $categoryId);
         return $this->redirectToRoute('catalog_category_show', $arguments);
     }
+
+
+
+
+
+
+
+
 
     private function getCategories()
     {
@@ -312,6 +327,7 @@ catalog:
 
 `prefix: /catalog` tells the router that every **path** defined in the imported file will be prefixed by **/catalog**. So the real path of `/some_path` will be `/catalog/some_path`.
 
+<br/>
 - Create **src/AppBundle/Resources/config/routing/catalog.yml**
 
 ````
@@ -333,20 +349,30 @@ catalog_category_save:
     defaults: { _controller: AppBundle:Catalog:saveCategory, categoryId:0}
     methods:  [POST]
 ````
-
+<br/><br/>
 We bound all the actions we created previously in CatalogController to different routes.
 
+<br/><br/>
 >`catalog_category_edit` and `catalog_category_save` has the same path, right? Yes, but not the same HTTP method (First is GET, second is POST). The router matcher uses many constraints to match a route. Besides the URL, you can specify HTTP methods, host, domain, etc.. In this example we used the `methods` filter which has a default value **all methods**. We will more routing filters later in this tutorial.
 
-At this point we are done, let's check if everything is working as expected.
+<br/>
 
+At this point we are done, let's check if everything is working as expected.
+``
 - http://127.0.0.1:8000/catalog/ should show "Catalog" and a link to Categories list page.
+
 - http://127.0.0.1:8000/catalog/category/list should show the list of 5 categories with (show/edit) links, and a link to the catalog index.
+
 - http://127.0.0.1:8000/catalog/category/show/1 should show the category Phones with No parent and a link to Categories list page.
+
 - http://127.0.0.1:8000/catalog/category/show/4 should show the category Desktop with the parent a link to Computers category page.
+
 - http://127.0.0.1:8000/catalog/category/edit/1 should show a form to edit the label and the parent of the category Phones. Upon submit, you should get to the Phones Category page.
+
 - http://127.0.0.1:8000/catalog/category/show/6 should show an error page with the message "CategoryId 6 does not exist "
 
+
+<br/><br/><br/>
 ### 2.1.4 Enhance the user interface
 
 All the actions we created works as expected. However the view doesn't look very nice. We will not start a shiny design project, we will use JQueryUI css framework and JQuery framework to make the layout a little bit better.
@@ -363,6 +389,7 @@ Let's start by adding the required resources to our project.
 
 Done, now we will import those resouces in the base template.
 
+<br/><br/>
 - Edit **app/Resources/views/base.html.twig**
 
 ````html
@@ -373,16 +400,16 @@ Done, now we will import those resouces in the base template.
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet"
-                href="{{asset( 'bundles/app/css/jquery-ui/jquery-ui.min.css' )}}" >
+              href="{{asset('bundles/app/css/jquery-ui/jquery-ui.min.css')}}" >
             <link rel="stylesheet"
-                href="{{asset( 'bundles/app/css/jquery-ui/jquery-ui.theme.min.css' )}}" >
+              href="{{asset('bundles/app/css/jquery-ui/jquery-ui.theme.min.css')}}" >
         {% endblock %}
         {% block javascripts %}
             <script type="text/javascript"
-                src="{{asset( 'bundles/app/js/jquery-2.1.4.min.js' )}}" >
+                src="{{asset('bundles/app/js/jquery-2.1.4.min.js')}}" >
             </script>
             <script type="text/javascript"
-                src="{{asset( 'bundles/app/js/jquery-ui.min.js' )}}" >
+                src="{{asset('bundles/app/js/jquery-ui.min.js')}}" >
             </script>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -395,6 +422,7 @@ Done, now we will import those resouces in the base template.
 
 The changes we are going to make seems to not to be closely related to the Catalog module. Also is very important to keep a consistant layout accross the application's sections. For this reason, we will create a common **app** template that eventually most of the pages templates will extend from.
 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 - Create **app/Resources/views/common/app.html.twig**
 
 ````html
@@ -405,7 +433,8 @@ The changes we are going to make seems to not to be closely related to the Catal
 {% endblock %}
 {% block javascripts %}
     {{ parent()}}
-    <script type="text/javascript" src="{{asset( 'bundles/app/js/app.js' )}}" ></script>
+    <script type="text/javascript"
+    src="{{asset( 'bundles/app/js/app.js' )}}" ></script>
 {% endblock %}
 {% block body %}
     <div id="container" class="ui-widget">
@@ -427,6 +456,8 @@ The changes we are going to make seems to not to be closely related to the Catal
 
 This new template defines a header/content/footer structure using blocks with the same names. This is a generic enough structure to ensure the aaplication pages share a common layout while letting every page define it's own structure internally. You can see that we added two references to files that we didn't created yet, **app.css** and **app.js** which will contain common CSS and JavaScript.
 
+<br/><br/>
+
 - Create **web/public/css/app.css**
 
 ````css
@@ -439,6 +470,7 @@ body{
 }
 ````
 
+<br/><br/><br/><br/>
 - Create **web/public/js/app.js**
 
 ````javascript
@@ -467,7 +499,8 @@ Update the templates
     <a href="{{ path('catalog_category_tree') }}">Category tree</a>
 {% endblock %}
 ````
-
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 - Edit **app/Resources/views/catalog/category/show.html.twig**
 
 ````html
@@ -502,6 +535,8 @@ Update the templates
 {% endblock %}
 ````
 
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 - Edit **app/Resources/views/catalog/category/list.html.twig**
 
 ````html
@@ -535,6 +570,8 @@ Update the templates
 {% endblock %}
 ````
 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 - Edit **app/Resources/views/catalog/category/edit.html.twig**
 
 ````html
@@ -610,7 +647,8 @@ We will not replace the categories list page, we will just add another template 
 {% block content %}
     {% for category in categories %}
         <ul class="tree" style="width: 200px; ">
-            {% include 'catalog/category/tree-node.html.twig' with {category:category} %}
+            {% include 'catalog/category/tree-node.html.twig'
+              with {category:category} %}
         </ul>
     {% endfor %}
 {% endblock %}
@@ -641,7 +679,8 @@ We will not replace the categories list page, we will just add another template 
     {% if category.children is not empty %}
         <ul style="width: 200px">
             {% for child in category.children %}
-                {% include 'catalog/category/tree-node.html.twig' with {category:child} %}
+                {% include 'catalog/category/tree-node.html.twig'
+                  with {category:child} %}
             {% endfor %}
         </ul>
     {% endif %}
@@ -679,7 +718,8 @@ private function buildTree(array $categories, $parentId = null)
     $tree = array();
     foreach ($categories as $category) {
         $parentNode = !$parentId && !$category['parent'];
-        $childNode = $parentId && $category['parent'] && $category['parent']['id'] === $parentId;
+        $childNode = $parentId && $category['parent']
+          && $category['parent']['id'] === $parentId;
         if ($parentNode || $childNode) {
             $category['children'] = $this->buildTree($categories, $category['id']);
             $tree[$category['id']] = $category;
@@ -692,7 +732,7 @@ private function buildTree(array $categories, $parentId = null)
 
 Done, you can visit http://127.0.0.1:8000/catalog/category/tree and you should see the categories are displayed as a menu.
 
-
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 ## 2.3 Homework
 
