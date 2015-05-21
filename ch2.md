@@ -380,12 +380,12 @@ All the actions we created works as expected. However the view doesn't look very
 Let's start by adding the required resources to our project.
 
 - Download JQueryUI from http://jqueryui.com/resources/download/jquery-ui-1.11.4.zip
-- Extract **jquery-ui-1.11.4/jquery-ui.min.css** to **src/AppBundle/public/css/jquery-ui/**
-- Extract **jquery-ui-1.11.4/jquery-ui.theme.min.css** to **src/AppBundle/public/css/jquery-ui/**
-- Extract **jquery-ui-1.11.4/images** to **src/AppBundle/public/css/jquery-ui/**
-- Extract **jquery-ui-1.11.4/jquery-ui.min.js** to **src/AppBundle/public/js**
+- Extract **jquery-ui-1.11.4/jquery-ui.min.css** to **src/AppBundle/Resources/public/css/jquery-ui/**
+- Extract **jquery-ui-1.11.4/jquery-ui.theme.min.css** to **src/AppBundle/Resources/public/css/jquery-ui/**
+- Extract **jquery-ui-1.11.4/images** to **src/AppBundle/Resources/public/css/jquery-ui/**
+- Extract **jquery-ui-1.11.4/jquery-ui.min.js** to **src/AppBundle/Resources/public/js**
 - Download JQuery from https://code.jquery.com/jquery-2.1.4.min.js
-- Save it to **src/AppBundle/public/js/jquery-2.1.4.min.js**
+- Save it to **src/AppBundle/Resources/public/js/jquery-2.1.4.min.js**
 
 Done, now we will import those resouces in the base template.
 
