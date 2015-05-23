@@ -327,6 +327,8 @@ catalog:
 
 `prefix: /catalog` tells the router that every **path** defined in the imported file will be prefixed by **/catalog**. So the real path of `/some_path` will be `/catalog/some_path`.
 
+>Pay attention to indentation, to have a valid Yaml file, make sure a child node is indented exactly ****4 spaces**** no tabs, to it's immediate parent.
+
 <br/>
 - Create **src/AppBundle/Resources/config/routing/catalog.yml**
 
@@ -458,7 +460,7 @@ This new template defines a header/content/footer structure using blocks with th
 
 <br/><br/>
 
-- Create **web/public/css/app.css**
+- Create **src/AppBundle/Resources/public/css/app.css**
 
 ````css
 html {
@@ -471,7 +473,7 @@ body{
 ````
 
 <br/><br/><br/><br/>
-- Create **web/public/js/app.js**
+- Create **src/AppBundle/Resources/public/js/app.js**
 
 ````javascript
 $(function () {
@@ -496,7 +498,6 @@ Update the templates
 {% block header %}Catalog{% endblock %}
 {% block content %}
     <a href="{{ path('catalog_category_list') }}">Category list</a>
-    <a href="{{ path('catalog_category_tree') }}">Category tree</a>
 {% endblock %}
 ````
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -629,6 +630,24 @@ Update the templates
 Change `{% extends 'base.html.twig' %}` to `{% extends 'common/app.html.twig' %}`
 
 Browse the different views again, they should look a bit better.
+
+>If you don't see any changes, most probably your **assets** are not installed. Assets are the public resources in src/AppBundle/Resources/public that should be available in he *web* directory.
+
+
+To install your assets, you can run `app/console assets:install`. This will *copy* the files from the bundles public directories to web/bundles/bundlename/. This is a good approach to share your public resources in a production environment, however is not efficient in development because you have to re-install your assets every time you make a change in order to see the changes.
+
+The output should be similar to this
+
+````bash
+$ app/console assets:install --symlink
+Trying to install assets as symbolic links.
+Installing assets for Symfony\Bundle\FrameworkBundle into web/bundles/framework
+The assets were installed using symbolic links.
+Installing assets for AppBundle into web/bundles/app
+The assets were installed using symbolic links.
+Installing assets for Sensio\Bundle\DistributionBundle into web/bundles/sensiodistribution
+The assets were installed using symbolic links.
+````
 
 
 ### 2.1.4 Tree view
