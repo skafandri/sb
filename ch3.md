@@ -1,4 +1,17 @@
 #3. Working with the database
+
+We are going to be working on the repository that you have created up to this point. If you skipped ahead, don't worry. You can clone the repository from its Github repository.
+
+````bash
+$ git clone git@github.com:skafandri/symfony-tutorial.git --branch ch2
+Cloning into 'symfony-tutorial'...
+remote: Counting objects: 57, done.
+remote: Total 57 (delta 0), reused 0 (delta 0), pack-reused 57
+Receiving objects: 100% (57/57), 46.98 KiB | 0 bytes/s, done.
+Checking connectivity... done.
+````
+Don't forget to `composer install`.
+
 ##3.1 Database design
 ###3.1.1 Introduction
 
@@ -53,7 +66,6 @@ Benchmark with 5000000 records
 There is absolutely no generic pattern on making a decision in this case. It solely depends on your specific application's needs.
 
 
-<br/><br/>
 ###3.1.2 Data schema
 
 We are still adopting the target bullet process. That means our first database design is not final and we will eventually update it as needed while going through implementing new features.
@@ -65,7 +77,6 @@ For this tutorial, we are going tu use MySQL database server. That said, the SQL
 ````sql
 CREATE SCHEMA IF NOT EXISTS `symfony` DEFAULT CHARACTER SET utf8;
 ````
-<br/>
 - Category table
 
 ````sql
@@ -85,7 +96,6 @@ ENGINE = InnoDB;
 <br/>
 >Whenever you can, take advantage of the dabase server new ID generation strategy for your primary keys (AUTO_INCREMENT for MySQL) You may be tempted to develop your own generation strategy (example: pattern based IDs like "day_date_sequential_number"), don't. You can have such a column in your table but keep it separate from table **id** key.  
 
-<br/>
 
 >When using auto generated keys, make them **UNSIGNED**. The values will be all positive (by default) so there is no point of deviding your values range by 2. For example the INT type for MySQL has the follwing ranges:
 <table>
@@ -106,7 +116,6 @@ ENGINE = InnoDB;
   </tr>
 </table>
 
-<br/>
 - product table
 
 ````sql
@@ -121,7 +130,6 @@ CREATE TABLE IF NOT EXISTS `symfony`.`product` (
 ENGINE = InnoDB;
 ````
 
-<br/>
 - a product belongs to many categories
 
 ````sql
@@ -146,7 +154,6 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 ````
 
-<br/><br/>
 - warehouse table
 
 ````sql
@@ -158,7 +165,6 @@ CREATE TABLE IF NOT EXISTS `symfony`.`warehouse` (
 ENGINE = InnoDB;
 ````
 
-<br/>
 - a product can be present in many warehouses but with different quantities
 
 ````sql
@@ -178,10 +184,9 @@ CREATE TABLE IF NOT EXISTS `symfony`.`warehouse_has_product` (
     FOREIGN KEY (`product_id`)
     REFERENCES `symfony`.`product` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION) ENGINE = InnoDB;
 ````
-<br/>
+
 - a product can be put in sale for a specific period with a given sale price
 
 ````sql
@@ -200,8 +205,7 @@ CREATE TABLE IF NOT EXISTS `symfony`.`product_sale` (
     FOREIGN KEY (`product_id`)
     REFERENCES `symfony`.`product` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION) ENGINE = InnoDB;
 ````
 
 > When working with MySQL prefer DATETIME above TMESTAMP. TMESTAMP has nothing more than DATETIME, however it has some drowbacks like having a maximum value of 2038-01-09 03:14:07 UTC
@@ -218,7 +222,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 ````
-<br/>
+
 - product_acquisition table
 
 ````sql
@@ -245,10 +249,10 @@ CREATE TABLE IF NOT EXISTS `symfony`.`product_acquisition` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 ````
-<br/>
+
 > Use Integer types for money. You may be tempted to use database's money type or floating point numbers to store money values, don't. At best you are coupling yourself to a specific database and/or a specific platform. At worst you may have precision leacks that may be extremly hard to debug.
 
-<br/><br/>
+<br/>
 - contact table
 
 ````sql
@@ -261,7 +265,6 @@ CREATE TABLE IF NOT EXISTS `symfony`.`contact` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 ````
-
 <br/>
 - account table
 
@@ -316,6 +319,7 @@ CREATE TABLE IF NOT EXISTS `symfony`.`country` (
 ENGINE = InnoDB;
 ````
 
+<br/>
 - address table
 
 ````sql
@@ -342,7 +346,7 @@ ENGINE = InnoDB;
 
 >**deleted** column will be used to achive what is called a *soft delete*. That is to update the deleted column value instead of issuing a DELETE query.
 
-
+<br/>
 - a customer can have many addresses
 
 ````sql
@@ -365,6 +369,7 @@ CREATE TABLE IF NOT EXISTS `symfony`.`customer_has_address` (
 ENGINE = InnoDB;
 
 ````
+<br/><br/><br/><br/><br/>
 
 - order table
 
@@ -388,7 +393,7 @@ COLLATE = utf8_general_ci;
 <br/>
 >Don't add indexes on low cardinality columns. For the moment, we can think of a handful *status* an order can have (new, delivered, cancelled..). We can also have a long sight and think about dozens of possible values. It is very unlinkly however, that an order can have thousands or even hundreds of possible status. Adding an index on this column will increase INSERT and UPDATE queries execution time without noticeably speeding up the SELECT queries.
 
-<br/><br/>
+<br/>
 
 - an order has many product_sales with different quantities
 
@@ -413,12 +418,12 @@ CREATE TABLE IF NOT EXISTS `symfony`.`order_product_line` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 ````
-
+<br/>
 A global view of the database schema
 
 ![database schema](/schema1.png)
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 ##3.2 Doctrine
 
