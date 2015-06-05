@@ -353,6 +353,19 @@ twig:
         - 'AppBundle:Form:fields.html.twig'
 ````
 
+- Edit **src/AppBundle/Entity/Customer.php**  and add `const REPOSITORY = 'AppBundle:Customer';` after class declaration.
+- Edit **src/AppBundle/Entity/Product.php**  and add `const REPOSITORY = 'AppBundle:Product';` after class declaration.
+- Edit **src/AppBundle/Entity/ProductSale.php**  and add `const REPOSITORY = 'AppBundle:ProductSale';` after class declaration.
+- Edit **src/AppBundle/Entity/Warehouse.php** and add __toString() method
+
+````php
+public function __toString()
+{
+    return $this->getName();
+}
+````
+
+
 - Edit **src/AppBundle/Controller/ProductSaleController.php**
 
 Add the following uses
@@ -360,9 +373,7 @@ Add the following uses
 ````php
 use AppBundle\Entity\Product;
 use Doctrine\ORM\Query\Expr\Join;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 ````
 
 Add the following action
@@ -501,18 +512,6 @@ public function createAction(Request $request)
     return $this->redirect(
                     $this->generateUrl('order_show', array('id' => $order->getId()))
     );
-}
-````
-
-- Edit **src/AppBundle/Entity/Customer.php**  and add `const REPOSITORY = 'AppBundle:Customer';` after class declaration.
-- Edit **src/AppBundle/Entity/Product.php**  and add `const REPOSITORY = 'AppBundle:Product';` after class declaration.
-- Edit **src/AppBundle/Entity/ProductSale.php**  and add `const REPOSITORY = 'AppBundle:ProductSale';` after class declaration.
-- Edit **src/AppBundle/Entity/Warehouse.php** and add __toString() method
-
-````php
-public function __toString()
-{
-    return $this->getName();
 }
 ````
 
