@@ -16,7 +16,7 @@ Checking connectivity... done.
 
 Don't forget to `composer install`.
 
-#5.1 Homework 1+2 from chapter 4
+##5.1 Homework 1+2 from chapter 4
 
 We will take a look at the source code for the dashboard.
 You don't need to write the follwing code as it comes with the last code you checked out previously in this chapter.
@@ -79,13 +79,13 @@ app:
 Good, to include this configuration, we will edit **app/config/dashboard.yml**
 and add `- { resource: dashboard.yml }` under **imports** section.
 
-If you try to run the application now, you should get an exception
+If you try to run the application now, you should get an exception  
 `FileLoaderLoadException in FileLoader.php line 125: There is no extension able to load the configuration for "app"`.
 
-Indeeed, we must register our bundle to provide the configuration format it expects.
+Indeed, we must register our bundle to provide the configuration format it expects.
 To do this, we need to add a configuration class.
 
--- **src/AppBundle/DependencyInjection/Configuration.php**
+- **src/AppBundle/DependencyInjection/Configuration.php**
 
 ````php
 <?php
@@ -464,3 +464,241 @@ https://github.com/skafandri/symfony-tutorial/tree/ch4/src/AppBundle/Resources/p
 You can visit http://127.0.0.1:8000/dashboard/ and see the result.
 You can rearrange the icons, open/close/move/maximize/minimize the windows.
 You will notice that we don't need a link to the dashboard from every listing anymore.
+
+
+
+##5.2 Datepicker
+
+In our application we have select to enter a date, which is not very handy.
+We will use the JQuery datepicker widget to edit dates. We will create a new form type that handles date fields.
+
+
+- Create **src/AppBundle/Form/DatePickerType.php**
+
+````php
+<?php
+
+namespace AppBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class DatePickerType extends AbstractType
+{
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'widget' => 'single_text'
+        ));
+    }
+
+    public function getParent()
+    {
+        return 'date';
+    }
+
+    public function getName()
+    {
+        return 'datePicker';
+    }
+}
+````
+
+- Edit **src/AppBundle/Form/ProductAcquisitionType.php**
+ change `->add('date')` to `->add('date', new DatePickerType())`
+
+- Edit **src/AppBundle/Resources/views/Form/fields.html.twig**  
+add the following block
+
+````html
+{% block datePicker_widget %}
+        <input type="text" {{ block('widget_attributes') }}
+               {% if value is not empty %}value="{{ value }}" {% endif %} class="datepicker"/>
+{% endblock datePicker_widget %}
+````
+
+- Edit **src/AppBundle/Resources/public/js/app.js** and update setupUi method so it looks like
+
+````javascript
+function setupUi() {
+    $(':input').addClass('ui-widget-content');
+    $('input[type="submit"], .button, #footer a').button();
+    $('th').addClass('ui-widget-header');
+    $('.tree').menu();
+    $('.link-dialog').click(function () {
+        showLinkDialog(this);
+        return false;
+    });
+
+    $('.datepicker').on('focus', function () {
+        $(this).datepicker({
+            dateFormat: "yy-mm-dd"
+        }).datepicker('show');
+    });
+}
+````
+Done, now the product acquisition forms use datepicker widget to input the date.
+
+
+Let's transform all checkboxes into buttons.
+
+- Edit **src/AppBundle/Resources/public/js/app.js**  
+ add `$( ":checkbox" ).button();` at the end of setupUi method.
+
+
+
+##5.3 Prevent deleting a category that has products
+
+We want to prevent the user from deleting a category that has at least one product.
+
+Let's start by adding this constraint to the entity.
+
+- Edit **src/AppBundle/Entity/Category.php**
+
+Add `@ORM\HasLifecycleCallbacks` after `@ORM\Entity`
+
+Add the follwing method
+
+````php
+/**
+ * @ORM\PreRemove
+ */
+public function preRemove()
+{
+    if (count($this->getProduct())) {
+        throw new LogicException('Cannot remove a category that has products');
+    }
+}
+````
+
+- Create **src/AppBundle/Exception/AppException.php**
+
+````php
+<?php
+
+namespace AppBundle\Exception;
+
+class AppException extends \Exception
+{
+
+}
+````
+
+- Create **src/AppBundle/Exception/LogicException.php**
+
+````php
+<?php
+
+namespace AppBundle\Exception;
+
+class LogicException extends AppException
+{
+
+}
+````
+
+Good, now a user cannot delete a category if it has at least one product.
+The user will get an ugly exception if the application runs in dev mode or a 500 HTTP error if it is running in prod mode.
+
+We want to display an error message for the end user. We will cath the exception in the controller and add it as a flash message.
+
+- Edit **src/AppBundle/Controller/CategoryController.php** and update the deleteAction as following
+
+````php
+public function deleteAction(Request $request, $id)
+{
+    $form = $this->createDeleteForm($id);
+    $form->handleRequest($request);
+
+    if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('AppBundle:Category')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Category entity.');
+        }
+
+        try {
+            $em->remove($entity);
+            $em->flush();
+        } catch (AppException $exception) {
+            $this->addFlash('warning', $exception->getMessage());
+            return $this->updateAction($request, $id);
+        }
+    }
+
+    return $this->redirect($this->generateUrl('category'));
+}
+````
+
+Don't forget to `use AppBundle\Exception\AppException;`
+
+- Edit **app/Resources/views/common/app.html.twig** and add `{% include 'common/flash_messages.html.twig' %}` before `{% block content %}`
+
+- Create **app/Resources/views/common/flash_messages.html.twig**
+
+````html
+{% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="ui-state-error">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+````
+
+Now you should see a red error message if you try to remove a category which has at least one product.
+
+
+##5.4 Soft delete
+
+When we created the address table, we added a *deleted* column to achieve a soft delete effect. We will implement this feature now.
+
+First, let's enable the address item to be visible in our dashboard. This step is not mandatory, but we need it to test the new functionality.
+
+- Edit **app/config/dashboard.yml** and set `active: true` for the *address* item.
+
+- Create **src/AppBundle/Event/Listener/SoftDelete.php**
+
+````php
+<?php
+
+namespace AppBundle\Event\Listener;
+
+use Doctrine\ORM\Event\OnFlushEventArgs;
+
+class SoftDelete
+{
+    public function onFlush(OnFlushEventArgs $args)
+    {
+        $unitOfWork = $args->getEntityManager()->getUnitOfWork();
+        foreach ($unitOfWork->getScheduledEntityDeletions() as $entity) {
+            if (is_callable(array($entity, 'setDeleted'))) {
+                $entity->setDeleted(true);
+                $unitOfWork->propertyChanged($entity, 'deleted', false, true);
+                $unitOfWork->scheduleExtraUpdate($entity, array(
+                    'deleted' => array(false, true)
+                ));
+                $args->getEntityManager()->persist($entity);
+            }
+        }
+    }
+}
+````
+
+
+- Edit **app/config/services.yml** empty the file and put:
+
+````
+imports:
+    - { resource: "@AppBundle/Resources/config/services.yml" }
+````
+
+- Create **src/AppBundle/Resources/config/services.yml**
+
+````
+services:
+    app.listener.soft_delete:
+        class: AppBundle\Event\Listener\SoftDelete
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+````
