@@ -76,7 +76,7 @@ app:
                 icon: warehouse.png
 ````
 
-Good, to include this configuration, we will edit **app/config/dashboard.yml**
+Good, to include this configuration, we will edit **app/config/config.yml**
 and add `- { resource: dashboard.yml }` under **imports** section.
 
 If you try to run the application now, you should get an exception  
