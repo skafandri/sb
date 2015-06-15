@@ -1,4 +1,4 @@
-#6 Services
+#6. Services
 
 I will ask you to get the latest code from chapter 5.
 
@@ -476,7 +476,9 @@ class ProductStock
 
 You can update your database schema by running `app/console doctrine:schema:create`
 
-<br/>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 ##6.2 Warehouse service
 
@@ -553,7 +555,6 @@ I don't recommend using *hidden* (implicit) dependencies for two reasons:
 - If your service depends on a service that doesn't exist, you will find out only in runtime,
 and sometimes only when a specific execution path happens within your service.
 
-<br/><br/>
 
 ##6.3 Warehouse service without implicit dependencies
 
@@ -1265,4 +1266,5 @@ $ app/console doctrine:fixtures:load --append
 1. Create a JsonRpcServer service that will expose some methods of some services.  
 The methods and services to expose should be configurable
 
-2. Add to warehouse service a method `moveProductStock($productId, $quantity, $fromWarehouseId, $toWarehouseId)`
+2. Add to warehouse service a method  
+`moveProductStock($productId, $quantity, $fromWarehouseId, $toWarehouseId)`
