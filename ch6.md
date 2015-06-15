@@ -50,6 +50,7 @@ class Product
      */
     private $id;
 
+
     /**
      * @var string
      *
@@ -95,6 +96,15 @@ class Product
     {
         return $this->id;
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Set code
@@ -142,6 +152,14 @@ class Product
         return $this->title;
     }
 
+
+
+
+
+
+
+
+
     /**
      * Set description
      *
@@ -167,7 +185,6 @@ class Product
 
     /**
      * Add category
-     *
      * @param \AppBundle\Entity\Category $category
      * @return Product
      */
@@ -249,6 +266,11 @@ class Warehouse
      */
     private $address;
 
+
+
+
+
+
     /**
      * Get id
      *
@@ -291,7 +313,6 @@ class Warehouse
     public function setAddress($address)
     {
         $this->address = $address;
-
         return $this;
     }
 
@@ -358,6 +379,10 @@ class ProductStock
      */
     private $product;
 
+
+
+
+
     /**
      * @var Warehouse
      *
@@ -411,6 +436,8 @@ class ProductStock
         return $this;
     }
 
+
+
     /**
      * Get
      *
@@ -449,6 +476,7 @@ class ProductStock
 
 You can update your database schema by running `app/console doctrine:schema:create`
 
+<br/>
 
 ##6.2 Warehouse service
 
@@ -506,6 +534,7 @@ app.warehouse:
 
 To see the new service in action, let's update the controller's index action to use the new service.
 
+<br/>
 - Edit **src/AppBundle/Controller/WarehouseController.php**  
 Change  
 `$entities = $em->getRepository('AppBundle:Warehouse')->findAll();`  
@@ -524,6 +553,7 @@ I don't recommend using *hidden* (implicit) dependencies for two reasons:
 - If your service depends on a service that doesn't exist, you will find out only in runtime,
 and sometimes only when a specific execution path happens within your service.
 
+<br/><br/>
 
 ##6.3 Warehouse service without implicit dependencies
 
@@ -587,6 +617,7 @@ Before that, we need to remove the warehouse from the product form type.
 
 We can proceed with the controller and views now.
 
+<br/>
 - Edit **src/AppBundle/Controller/WarehouseController.php** add the follwing action
 
 ````php
@@ -613,6 +644,8 @@ public function productStocksAction($productId)
 Add `<th>Stocks</th>` after `<th>Description</th>`  
 Add `<td>{{ render(controller('AppBundle:Warehouse:productStocks', { 'productId': entity.id  })) }}</td>` after `<td>{{ entity.description }}</td>`
 
+<br/><br/>
+
 ##6.4 Catalog service
 
 We want to start implementing a catalog service. We will need doctrine service for this class as well.  
@@ -633,12 +666,11 @@ class AbstractDoctrineAware
     const ID = 'app.doctrine_aware';
 
     /**
-     *
      * @var Registry
      */
     protected $doctrine;
+
     /**
-     *
      * @var EntityManager
      */
     protected $entityManager;
@@ -658,56 +690,25 @@ class AbstractDoctrineAware
 
 namespace AppBundle\Service;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
-use Doctrine\ORM\EntityManager;
+use AppBundle\Entity\ProductStock;
+use AppBundle\Entity\Warehouse;
 
-class AbstractDoctrineAware
+class WarehouseService extends AbstractDoctrineAware
 {
-    const ID = 'app.doctrine_aware';
 
-    /**
-     *
-     * @var Registry
-     */
-    protected $doctrine;
-    /**
-     *
-     * @var EntityManager
-     */
-    protected $entityManager;
+    const ID = 'app.warehouse';
 
-    public function __construct(Registry $doctrine)
+    public function getAll()
     {
-        $this->doctrine = $doctrine;
-        $this->entityManager = $doctrine->getManager();
+        return $this->entityManager
+                        ->getRepository(Warehouse::REPOSITORY)
+                        ->findAll();
     }
 }
 ````
 
-- Edit **src/AppBundle/Resources/config/services.yml**
-
-````ini
-services:
-    app.listener.soft_delete:
-        class: AppBundle\Event\Listener\SoftDelete
-        tags:
-            - { name: doctrine.event_listener, event: onFlush }
-
-    app.doctrine_aware:
-        class: AppBundle\Service\AbstractDoctrineAware
-        arguments: [@doctrine]
-        abstract: true
-
-    app.warehouse:
-        class: AppBundle\Service\WarehouseService
-        parent: app.doctrine_aware
-
-    app.catalog:
-        class: AppBundle\Service\CatalogService
-        parent: app.doctrine_aware
-````
-
-- Create src/AppBundle/Service/CatalogService.php
+<br/><br/>
+- Create **src/AppBundle/Service/CatalogService.php**
 
 ````php
 <?php
@@ -731,6 +732,30 @@ class CatalogService extends AbstractDoctrineAware
 }
 ````
 
+<br/>
+- Edit **src/AppBundle/Resources/config/services.yml**
+
+````ini
+services:
+    app.listener.soft_delete:
+        class: AppBundle\Event\Listener\SoftDelete
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+
+    app.doctrine_aware:
+        class: AppBundle\Service\AbstractDoctrineAware
+        arguments: [@doctrine]
+        abstract: true
+
+    app.warehouse:
+        class: AppBundle\Service\WarehouseService
+        parent: app.doctrine_aware
+
+    app.catalog:
+        class: AppBundle\Service\CatalogService
+        parent: app.doctrine_aware
+````
+
 Done, let's update the category controller to use the catalog service. Change indexAction as follwing
 
 ````php
@@ -745,6 +770,8 @@ public function indexAction()
 ````
 
 and `use AppBundle\Service\CatalogService;`
+
+<br/><br/><br/><br/>
 
 ##6.5 Optional references
 
@@ -807,6 +834,8 @@ class AbstractDoctrineAware
 }
 ````
 
+<br/><br/><br/><br/><br/><br/><br/>
+
 - Update *getProductStocks* from **src/AppBundle/Service/WarehouseService.php**
 
 ````php
@@ -816,15 +845,19 @@ public function getProductStocks($productId)
             getRepository(ProductStock::REPOSITORY)
             ->findBy(array('product' => $productId));
     if (empty($stocks)) {
-        $this->logger->addNotice(sprintf('No stocks found for product %s', $productId));
+        $this->logger->addNotice(
+                sprintf('No stocks found for product %s', $productId)
+              );
     }
 
     return $stocks;
 }
 ````
 
+<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
-##6.6 Optional references
+##6.6 Fixtures
 
 ###6.6.1 DoctrineFixturesBundle
 
@@ -833,7 +866,10 @@ The best way is to actually use a copy of the production data (after removing or
 That's however a luxury not everyone can have. Since we are developing a new application, we will create some data fixtures.
 
 To isntall **DoctrineFixturesBundle** add `"doctrine/doctrine-fixtures-bundle": "2.2.0"` to the *require* section, in **composer.json** then run `composer update`.  
-To enable the bundle within the application, edit **app/AppKernel.php** and add a new item to the $bundles array in registerBundles() `new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),`.
+To enable the bundle within the application, edit **app/AppKernel.php** and add a new item to the $bundles array in registerBundles()  
+`new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),`
+
+<br/>
 
 ###6.6.2 Category fixtures
 
@@ -843,7 +879,6 @@ We will write a data fixture to load the database with a simple category tree.
 
 ````php
 <?php
-
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Category;
@@ -855,9 +890,11 @@ class CategoryFixtures extends AbstractFixture
 
     private $manager;
     private $categories = array(
-        'computers' => array('servers', 'desktop', 'laptops', 'components', 'periferals'),
+        'computers' => array('servers', 'desktop',
+            'laptops', 'components', 'periferals'),
         'phones and tablets' => array('phones', 'tablets', 'accessories'),
-        'appliances' => array('coffe machines', 'washing machines', 'blenders', 'juicers'),
+        'appliances' => array('coffe machines',
+            'washing machines', 'blenders', 'juicers'),
         'video games' => array('consoles', 'games', 'accessories')
     );
 
@@ -883,10 +920,8 @@ class CategoryFixtures extends AbstractFixture
         $category = new Category();
         $category->setLabel($label)->setParentCategory($parentCategory);
         $this->manager->persist($category);
-
         return $category;
     }
-
 }
 ````
 
@@ -960,10 +995,18 @@ class CategoryRepository extends EntityRepository
  * @ORM\ManyToMany(targetEntity="Product", inversedBy="category")
  * @ORM\JoinTable(name="category_has_product",
  *   joinColumns={
- *     @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="cascade")
+ *     @ORM\JoinColumn(
+        name="category_id",
+        referencedColumnName="id",
+        onDelete="cascade"
+        )
  *   },
  *   inverseJoinColumns={
- *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="cascade")
+ *     @ORM\JoinColumn(
+        name="product_id",
+        referencedColumnName="id",
+        onDelete="cascade"
+        )
  *   }
  * )
  */
@@ -989,7 +1032,8 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-abstract class AbstractDataFixture extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractDataFixture extends AbstractFixture
+implements OrderedFixtureInterface
 {
 
     protected $manager;
@@ -1020,9 +1064,11 @@ class CategoryFixtures extends AbstractDataFixture
 
     private $categoriesCount = 0;
     private $categories = array(
-        'computers' => array('servers', 'desktop', 'laptops', 'components', 'periferals'),
+        'computers' => array('servers', 'desktop',
+            'laptops', 'components', 'periferals'),
         'phones and tablets' => array('phones', 'tablets', 'accessories'),
-        'appliances' => array('coffe machines', 'washing machines', 'blenders', 'juicers'),
+        'appliances' => array('coffe machines', 'washing machines',
+            'blenders', 'juicers'),
         'video games' => array('consoles', 'games', 'accessories')
     );
 
@@ -1042,8 +1088,10 @@ class CategoryFixtures extends AbstractDataFixture
         $category = new Category();
         $category->setLabel($label)->setParentCategory($parentCategory);
         $this->manager->persist($category);
-
-        $this->setReference(sprintf('category_%s', $this->categoriesCount), $category);
+        $this->setReference(
+            sprintf('category_%s', $this->categoriesCount),
+            $category
+          );
 
         return $category;
     }
@@ -1078,10 +1126,10 @@ This was a short word about code refactoring, if you want to read more about the
 I recommend two invaluable books *Refactoring: Improving the Design of Existing Code* by *Martin Fowler*
 and *Clean Code A Handbook of Agile Software Craftsmanship* by *Robert C. Martin*
 
-
 ###6.6.4 Product fixtures
 
 Let's first prepare the logic that deletes all the products.
+<br/>
 
 - Create **src/AppBundle/Repository/ProductRepository.php**
 
@@ -1108,16 +1156,20 @@ class ProductRepository extends EntityRepository
 ````
 
 - Edit **src/AppBundle/Entity/Product.php**  
-Change `* @ORM\Entity` into `* @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")` in the class annotation.
+Change `* @ORM\Entity`  
+into  
+`* @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")`  
+in the class annotation.
+
 
 For the product fixtures we have a new requirement.
 We should be able to set the number of products per category as a parameter.
+
 
 - Create **src/AppBundle/DataFixtures/ORM/ProductFixtures.php**
 
 ````php
 <?php
-
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Category;
@@ -1137,7 +1189,9 @@ class ProductFixtures extends AbstractDataFixture implements ContainerAwareInter
         for ($i = 1; $i <= $this->productsPerCategory; $i++) {
             $product = new Product();
             $product->setCode(sprintf('code_%s_%s', $category->getId(), $i))
-                    ->setTitle(sprintf('title %s %s %s', $category->getId(), $i, uniqid()))
+                    ->setTitle(
+                      sprintf('title %s %s %s',$category->getId(),$i,uniqid())
+                    )
                     ->setDescription(sprintf('product description %s', $i));
             $category->addProduct($product);
             $this->manager->persist($product);
@@ -1185,7 +1239,7 @@ Add a new key under *parameters* in **app/config/parameters.yml**
 fixtures:
         products_per_category: #number
 ````
-
+<br/>
 The previous file is not interpreted by the framework.
 Is very helpful to contain the expected parameter keys so when one developer adds a new parameter,
 it becomes visible to his team members as soon as he pushes his changes to a commun remote.
@@ -1204,3 +1258,11 @@ $ app/console doctrine:fixtures:load --append
   > loading [1] AppBundle\DataFixtures\ORM\CategoryFixtures
   > loading [2] AppBundle\DataFixtures\ORM\ProductFixtures
 ````
+
+
+###6.6.5 Homework
+
+1. Create a JsonRpcServer service that will expose some methods of some services.  
+The methods and services to expose should be configurable
+
+2. Add to warehouse service a method `moveProductStock($productId, $quantity, $fromWarehouseId, $toWarehouseId)`
