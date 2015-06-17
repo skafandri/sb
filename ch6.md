@@ -474,7 +474,7 @@ class ProductStock
 }
 ````
 
-You can update your database schema by running `app/console doctrine:schema:create`
+You can update your database schema by running `app/console doctrine:schema:drop --force` then `app/console doctrine:schema:create`
 
 <br/><br/><br/><br/>
 <br/><br/><br/><br/>
@@ -1022,6 +1022,8 @@ Updating database schema...
 Database schema updated successfully! "32" queries were executed
 ````
 
+<br/>
+
 - Create **src/AppBundle/DataFixtures/ORM/AbstractDataFixture.php**
 
 ````php
@@ -1042,13 +1044,21 @@ implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $this->manager = $manager;
+        $this->preLoad();
         $this->createAndPersistData();
         $this->manager->flush();
+    }
+
+    protected function preLoad()
+    {
+
     }
 
     abstract protected function createAndPersistData();
 }
 ````
+
+<br/>
 
 - Refactor **src/AppBundle/DataFixtures/ORM/CategoryFixtures.php**
 
@@ -1118,6 +1128,7 @@ From now on, we will load the fixtures using the *amend* option.
 $ app/console doctrine:fixtures:load --append
   > loading [1] AppBundle\DataFixtures\ORM\CategoryFixtures
 ````
+<br/>
 
 >I intentionally introduced the *refactoring* above.
 You should continuously refine and clean your code design, to keep it easily maintainable.
