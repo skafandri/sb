@@ -505,7 +505,7 @@ class ServicePass implements CompilerPassInterface
 }
 ````
 
-Now we need to the previous compiler pass when building our bundle.
+Now we need to add the previous compiler pass when building our bundle.
 
 - Edit **src/JsonRpcBundle/JsonRpcBundle.php**
 
@@ -553,7 +553,7 @@ When creating an order, we want to do the following:
 An obvious function schema may look like this
 
 ````
-function createOrder(){
+function createOrder(){``
     logOrderCreate();
     saveToDatabase();
     reserveProductsInWarehosue();
@@ -566,7 +566,7 @@ This method may have several problems:
 
 - It break the SRP (Single Responsibility Principle) createOrder is doing many things besides creating an order.
 - It breaks the Open/closed principle. If we want to change the way we log the order creation for example, we will have to change the createOrder method.
-- The order service will need to be coupled with many services (warehouse service, communication service, logging service)
+- The order service will need to be coupled with many services (warehouse service, communication service, logging service...)
 
 We will rather implement the createOrder as following
 
