@@ -570,7 +570,7 @@ confirmation:
     from: orders@site.com
 ````
 
-We forgot to add a **from** field to our email Message. Edit **src/AppBundle/Communication/Email/Message.php** to add the **from** member and it's the accessors.
+We forgot to add a **from** field to our email Message. Edit **src/AppBundle/Communication/Email/Message.php** to add the **from** member and it's accessors.
 
 ````php
 private $from;
@@ -642,7 +642,7 @@ class EmailEvent extends Event implements LoggableEventInterface
     }
 }
 ````
-
+<br/>
 - Create **src/AppBundle/Event/Communication/Email/EmailSendingEvent.php**
 
 ````php
@@ -688,7 +688,7 @@ class EmailSendingEvent extends EmailEvent
 
 We will update the CommunicationService to require 3 new dependencies, a template renderer, a translator, and an event dispatcher.
 
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 - Edit **src/AppBundle/Service/Communication/CommunicationService.php**
 
@@ -698,7 +698,6 @@ We will update the CommunicationService to require 3 new dependencies, a templat
 namespace AppBundle\Service\Communication;
 
 use AppBundle\Communication\Email\Message;
-use AppBundle\Document\Email;
 use AppBundle\Event\Communication\Email\EmailEvent;
 use AppBundle\Event\Communication\Email\EmailSendingEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -747,7 +746,11 @@ class CommunicationService
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function sendConfirmationEmail($emailAddress, $name, $orderNumber, $locale = 'en')
+    public function sendConfirmationEmail(
+        $emailAddress,
+        $name, $orderNumber,
+        $locale = 'en'
+    )
     {
         $arguments = array('customerName' => $name, 'orderNumber' => $orderNumber);
         return $this->sendEmail('confirmation', $emailAddress, $arguments, $locale);
@@ -783,13 +786,7 @@ class CommunicationService
     private function dispatchEmailSendingEvent($type, $arguments, $message, $status)
     {
         $event = new EmailSendingEvent($type, $arguments, $message);
-
-        $eventNames = array(
-            Email::STATUS_SENT => EmailSendingEvent::SENT,
-            Email::STATUS_TEMPORARY_ERROR => EmailSendingEvent::ERROR_TEMPORARY,
-            Email::STATUS_PERMANENT_ERROR => EmailSendingEvent::ERROR_PERMANENT
-        );
-        $this->eventDispatcher->dispatch($eventNames[$status], $event);
+        $this->eventDispatcher->dispatch(EmailSendingEvent::SENT, $event);
     }
 
     private function renderTempalate($type, $arguments)
@@ -821,6 +818,7 @@ class CommunicationService
     }
 
 }
+
 ````
 
 <br/>
@@ -854,7 +852,7 @@ private function getCustomerName(OrderEvent $event)
 }
 ````
 
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 Done. Try to create an order through the JSON-RPC API. You should see new logs about the email sending.
 
@@ -1178,7 +1176,7 @@ class EmailCommunicationListener
         );
     }
 
-    private function persistEmailMessage(Message $message, $type, $status, $arguments)
+    private function persistEmailMessage(Message $message,$type,$status,$arguments)
     {
         $email = new Email();
         $email->setType($type);
@@ -1211,7 +1209,6 @@ class EmailCommunicationListener
 >AppBundle\Event\Communication\Email\EmailEvent::SENT</parameter>
 ````
 
-<br/><br/><br/><br/><br/>
 
 - Edit **src/AppBundle/Resources/config/listeners.yml**, add the following service definition
 
@@ -1229,25 +1226,45 @@ app.email_communication_listener:
         - {name: kernel.event_listener,event: %app.email.sent%,method:onEmailSent}
 ````
 
- To view the data and manage your MongoDB server, you need a mongo client.
+- Edit **src/AppBundle/Service/Communication/CommunicationService.php**  
+Add `use AppBundle\Document\Email;`  
+Update `dispatchEmailSendingEvent` to dispatch the correct event name  
 
-There are plenty of GUIs applications to manage a MongoDB server. I personally prefer to use http://robomongo.org/, is lightwight, cross-platform, and embeds the same JavaScript engine that is used by the the MongoDB mongo shell.
+````php
+private function dispatchEmailSendingEvent($type, $arguments, $message, $status)
+{
+    $event = new EmailSendingEvent($type, $arguments, $message);
 
-We can already experience the power of MongoDB search. You can try the following query:
+    $eventNames = array(
+        Email::STATUS_SENT => EmailSendingEvent::SENT,
+        Email::STATUS_TEMPORARY_ERROR => EmailSendingEvent::ERROR_TEMPORARY,
+        Email::STATUS_PERMANENT_ERROR => EmailSendingEvent::ERROR_PERMANENT
+    );
+    $this->eventDispatcher->dispatch($eventNames[$status], $event);
+}
+````
 
+To view the data and manage your MongoDB server, you need a mongo client.  
+There are plenty of GUIs applications to manage a MongoDB server. I personally prefer to use http://robomongo.org/, is lightwight, cross-platform, and embeds the same JavaScript engine that is used by the the MongoDB mongo shell.  
+We can already experience the power of MongoDB search. You can try the following query:  
 ````
 db.getCollection('emails').find({'arguments.customerName':'contact 1'})
 ````
 
 This will fetch all the records that has the key **arguments.customerName** equals to **contact 1**
 
-What about `db.getCollection('emails').find({'arguments.customerName':/contact*/})`? Isn't that awesome? For more advanced queries, I invite you to visit http://docs.mongodb.org/manual/reference/operator/query/where/
+What about `db.getCollection('emails').find({'arguments.customerName':/contact*/})`? Isn't that awesome? To learn more about querying mongo data, I invite you to visit http://docs.mongodb.org/manual/reference/operator/query/where/
 
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ##9.4 External provider
 
 We are going to use an external provider to send emails. For this example we will create a fake external provider that just returns on of possible status (success, temporary error, permanent error)
 
+<br/>
 - Create **src/AppBundle/Controller/ExternalProviderController.php**
 
 ````php
@@ -1269,7 +1286,7 @@ class ExternalProviderController extends Controller
 
 }
 ````
-
+<br/>
 - Edit **src/AppBundle/Resources/config/routing.yml** and add
 
 ````
@@ -1277,7 +1294,7 @@ app_communication:
     resource: "@AppBundle/Resources/config/routing/communication.yml"
     prefix:   /communication
 ````
-
+<br/>
 - Create **src/AppBundle/Resources/config/routing/communication.yml**
 
 ````
@@ -1285,7 +1302,7 @@ communication_external_provider:
     path:     /external_provider
     defaults: { _controller: "AppBundle:ExternalProvider:index" }
 ````
-
+<br/><br/><br/><br/><br/><br/>
 - Create **src/AppBundle/Communication/Email/ExternalProvider.php**
 
 ````php
@@ -1308,7 +1325,8 @@ class ExternalProvider implements ProviderInterface
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_TIMEOUT, 10);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_URL, $this->providerHost . '/communication/external_provider');
+        curl_setopt($curl, CURLOPT_URL, $this->providerHost .
+                        '/communication/external_provider');
         $result = curl_exec($curl);
         curl_close($curl);
         return $result;
@@ -1334,6 +1352,8 @@ Add the same parameter to **app/config/parameters.yml** the value should be your
 
 On my dev environment I run two instances http://127.0.0.1:8000/ and http://127.0.0.1:8888/ so my parameter looks like `communication.external_provider_host: http://127.0.0.1:8888`
 
+<br/><br/>
+
 ##9.5 Email recycler command
 
 We will implement a command that will try to resend any emails that have a temporary error.
@@ -1344,7 +1364,6 @@ We will implement a command that will try to resend any emails that have a tempo
 
 ````
 <?php
-
 namespace AppBundle\Command;
 
 use AppBundle\Communication\Email\Message;
@@ -1360,19 +1379,16 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class EmailsRecyclerCommand extends ContainerAwareCommand
 {
-
     /**
      *
      * @var CommunicationService
      */
     private $communicationService;
-
     /**
      *
      * @var DocumentManager
      */
     private $documentManager;
-
     /**
      *
      * @var EventDispatcher
@@ -1385,7 +1401,10 @@ class EmailsRecyclerCommand extends ContainerAwareCommand
         $this->setName('app:communication:recycler:emails');
         $this->setDescription('Retries the sending of emails with temporary error');
         $this->addOption(
-                'limit', '-l', InputOption::VALUE_OPTIONAL, 'Number of emails to resend', 10
+                'limit', '-l',
+                InputOption::VALUE_OPTIONAL,
+               'Number of emails to resend',
+               10
         );
     }
 
@@ -1414,10 +1433,11 @@ class EmailsRecyclerCommand extends ContainerAwareCommand
             $emailAddress = $email->getEmailAddress();
             $arguments = $email->getArguments();
             $this->eventDispatcher->dispatch(
-                    EmailEvent::RESEND, new EmailEvent($type, $emailAddress, $arguments)
+                EmailEvent::RESEND, new EmailEvent($type, $emailAddress, $arguments)
             );
 
-            $status = $this->communicationService->sendEmail($type, $emailAddress, $arguments);
+            $status = $this->communicationService
+                                    ->sendEmail($type, $emailAddress, $arguments);
             $email->setStatus($status);
             $this->documentManager->persist($email);
         }
